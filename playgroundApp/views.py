@@ -1,8 +1,8 @@
-# Create your views here.
-#from django.http import render, get_object_or_404, redirect, render_to_response
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
-from playgroundApp.models import Playground, UserReview
-from playgroundApp.forms import addReviewForm
+# Create your views here local -- playgroundApp/views.py
+from django.http import render, get_object_or_404, redirect, render_to_response
+from playgroundApp.models import Playground
+from django.core.paginator import Paginator, EmptyPage
+from playgroundApp.forms import addPlaygroundForm
 
 
 def Playground (request):
@@ -43,13 +43,13 @@ def suggestPlayground(request):
 
 	#return render (request, 'playgroundApp/new_playground.html', { 'form': form, })
 	return render (request, "playgroundApp/playgroundSuggest.html")
-def userProfile (request):
-	return (request, "playgroundApp/userProfile.html")
+def useProfile (request):
+
 	#User=get_object_or_404 (Playground)
         #return render (request, 'playgroundApp/user_info.html', {"User": User})
-
+	return (request, "playgroundApp/userProfile.html")
 def userLogin (request):
-	
+
 	if request.method=='POST':
 		form=login()
 	else:
@@ -57,11 +57,13 @@ def userLogin (request):
 	if form.is_valid():
 		User=User.objects.all().filter(name=form.clean_data['name'])
 		return render (request, "playgroundApp/user_profile.html", {'User': User})
-	
+
 	return render (request, "playgroundApp/user_login.html", {'form': form,})
 
 def userSignUp(request):
 	return  render (request, "plagyroundApp/userSignup.html")
+
+
 
 def home(request):
         return HttpResponse('HelloWorld')
@@ -92,20 +94,13 @@ def userSignUp(request):
 
 def userSuggest(request):
 	return  render (request, "playgroundApp/user_suggest.html")
-
-#view for when the user wants to post a review of a playground
 def userReview(request):
-	if request.method == 'GET':
-		newReview = addReviewForm()
-	else:
-		newReview =addReviewForm(request.POST)
-		submitdate =datetime.utcnow()
-	if newReview.is_valid():
-		newReview =UserReview.objects.create(name=request.POST['name'], date=submitdate)
-		return HttpResponseRedirect(reverse('playgroundapp_home'))
-	return render(request, 'playgroundApp/new_review.html')
-
-
-def map(request):
-	return  render (request, "playgroundApp/map.html")
-
+       if request.method == 'GET':
+               newReview = addReviewForm()
+       else:
+               newReview =addReviewForm(request.POST)
+               submitdate =datetime.utcnow()
+       if newReview.is_valid():
+               newReview =UserReview.objects.create(name=request.POST['name'], date=submitdate)
+               return HttpResponseRedirect(reverse('playgroundapp_home'))
+       return render(request, 'playgroundApp/new_review.html')

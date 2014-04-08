@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <div class="container">
 <h1>Add a Playground</h1>
 </div>
@@ -9,7 +8,27 @@
 
 <div class=row>
     <div class="col-md-6 left-info">
-        <h2>Insert Contact Form Herey</h2>
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="name" style="border: 1px solid #000; border-right: none;">
+        <span class="input-group-btn">
+        </span>
+        
+        <input type="text" class="form-control" placeholder="street address" style="border: 1px solid #000; border-right: none;">
+        <span class="input-group-btn">
+        </span>
+        
+        <input type="text" class="form-control" placeholder="city" style="border: 1px solid #000; border-right: none;">
+        <span class="input-group-btn">
+        </span>
+        
+        <input type="text" class="form-control" placeholder="hours open" style="border: 1px solid #000; border-right: none;">
+        <span class="input-group-btn">
+        </span>
+        
+        <input type="text" class="form-control" placeholder="description" style="border: 1px solid #000; border-right: none;">
+        <span class="input-group-btn">
+        </span>
+    </div>
     </div>
     <div class="col-md-6 left-info">
             <div class="panel panel-default">
@@ -17,19 +36,19 @@
               check all features
             </h4>
                 <ul>
-                    <li><input type="Swings"></li>
-                    <li><input type="Slide"></li>
-                    <li><input type="Monkey bars"></li>
-                    <li><input type="Sandbox"></li>
-                    <li><input type="Fence"></li>
-                    <li><input type="Field"></li>
-                    <li><input type="Picnic Tables"></li>
-                    <li><input type="Hiking trail"></li>
-                    <li><input type="Bathrooms"></li>
-                    <li><input type="Changing station"></li>
-                    <li><input type="Shade"></li>
-                    <li><input type="Basketball courts"></li>
-                    <li><input type="Baseball field"></li>
+                    <li><input type="radio"> Swings</li>
+                    <li><input type="radio"> Slide</li>
+                    <li><input type="radio"> Monkey bars</li>
+                    <li><input type="radio"> Sandbox</li>
+                    <li><input type="radio"> Fence</li>
+                    <li><input type="radio"> Field</li>
+                    <li><input type="radio"> Picnic Tables</li>
+                    <li><input type="radio"> Hiking trail</li>
+                    <li><input type="radio"> Bathrooms</li>
+                    <li><input type="radio"> Changing station</li>
+                    <li><input type="radio"> Shade</li>
+                    <li><input type="radio"> Basketball courts</li>
+                    <li><input type="radio"> Baseball field</li>
                 </ul>
             </div>
              <div class="panel panel-default">
@@ -37,13 +56,13 @@
               appropriate for ages
             </h4>
                 <ul>
-                    <li><input type="0-2"></li>
-                    <li><input type="2-4"></li>
-                    <li><input type="4-6"></li>
-                    <li><input type="6-8"></li>
-                    <li><input type="8-10"></li>
-                    <li><input type="10-12"></li>
-                    <li><input type="12-14"></li>
+                    <li><input type="radio"> 0-2</li>
+                    <li><input type="radio"> 2-4</li>
+                    <li><input type="radio"> 4-6</li>
+                    <li><input type="radio"> 6-8</li>
+                    <li><input type="radio"> 8-10</li>
+                    <li><input type="radio"> 10-12</li>
+                    <li><input type="radio"> 12-14</li>
                 </ul>
             </div>
               <div class="panel panel-default">
@@ -51,14 +70,13 @@
               handicap accessible?
             </h4>
                 <ul>
-                    <li><input type="Yes"></li>
-                    <li><input type="No"></li>
-                    <li><input type="Don't know"></li>
+                    <li><input type="radio"> Yes</li>
+                    <li><input type="radio"> No</li>
+                    <li><input type="radio"> Don't know</li>
                 </ul>
             </div>
           </div>
      
 </div>
-
 
 {% endblock %}
