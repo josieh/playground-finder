@@ -21,7 +21,10 @@ def Playground_List(request):
 	#except Emptypage:
 		#playgrounds=paginator.page(paginator.num_pages)
 	#return render (request, 'playgroundApp/playground_list.html' {playgrounds: playgrounds})
-	return render (request, "home.html")
+	context = {
+		'playgrounds': Playground.object.all()
+	}
+	return render (request, "home.html", context)
 
 def suggestPlayground(request):
 	#if request.method == 'GET':
