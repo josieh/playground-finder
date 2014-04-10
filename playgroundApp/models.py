@@ -7,11 +7,9 @@ class User(models.Model):
     Description = models.TextField()
     Zipcode = models.IntegerField(null=True)
     Age = models.IntegerField(null= True)
-    isWorkingMom = models.BooleanField()
-    isWorkingDad = models.BooleanField()
-    isStayMom = models.BooleanField()
-    isStayDad = models.BooleanField()
-    isGrandma = models.BooleanField()
+    isMom = models.BooleanField()
+    isDad = models.BooleanField()
+    isGrandparent = models.BooleanField()
     isOther = models.BooleanField()
     FavoritesID = models.IntegerField(null=True)
     Image = models.TextField()
@@ -24,7 +22,20 @@ class User(models.Model):
     def save(self, *args, **kwargs):
         self.UserID = self.UserID.upper()
         super(User, self).save(*args, **kwargs)
-
+        
+class FavoritePlaygroundLookup(models.Model):
+    UserID = models.CharField(unique=True, null=False, max_length=200)
+    PlaygroundID = models.IntegerField(unique=True, null=False)
+    
+    class Meta(object):
+        verbose_name_plural = "Favorites"
+        #ordering = ('userID',)
+    def __unicode__(self):
+        return unicode(self.UserID)
+    def save(self, *args, **kwargs):
+        self.UserID = self.UserID.upper()
+        super(User, self).save(*args, **kwargs)
+        
 class Playground(models.Model):
     PlaygroundID = models.IntegerField(unique=True, null=False)
     Name = models.TextField()
@@ -70,13 +81,11 @@ class SchoolDistrict(models.Model):
 
 class Age(models.Model):
     AgeID = models.IntegerField(unique=True, null=False)
-    ZeroTwo = models.BooleanField()
-    TwoFour = models.BooleanField()
-    FourSix = models.BooleanField()
-    SixEight = models.BooleanField()
-    EightTen = models.BooleanField()
-    TenTwelve = models.BooleanField()
-    TwelveFourteen = models.BooleanField()
+    Infant = models.BooleanField()
+    Toddler = models.BooleanField()
+    PreSchooler = models.BooleanField()
+    SchoolAged = models.BooleanField()
+    PreTeen = models.BooleanField()
 
     class Meta(object):
         verbose_name_plural = "Ages"
@@ -178,6 +187,17 @@ class SuggestPlayground(models.Model):
     Address = models.TextField()
     Description = models.CharField(max_length=1000)
     Image = models.TextField()
+    Swing = models.IntegerField()
+    Slide = models.IntegerField()
+    MonkeyBars = models.IntegerField()
+    SandBox = models.IntegerField()
+    Field = models.IntegerField()
+    PicnicTable = models.IntegerField()
+    Bathrooms = models.IntegerField()
+    ChangingStation = models.IntegerField()
+    Shade = models.IntegerField()
+    BasketballCourt = models.IntegerField()
+    Baseball = models.IntegerField()    
 
     class Meta(object):
         verbose_name_plural = "Suggested Playgrounds"
