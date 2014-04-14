@@ -21,7 +21,7 @@
         position: absolute;
         top: 5px;
         left: 50%;
-        margin-left: -100px;
+        margin-left: -150px;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -30,8 +30,7 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-    
-    
+
     var playgrounds = [];
     var playground = [];
     {% for playground in playgrounds %}
@@ -78,7 +77,6 @@ function initialize() {
   var image = "{{ STATIC_URL }}marker_purple.png";
   
     for(var i=0; i<playgrounds.length;i++){
-      
       var codeStr = playgrounds[i].toString();
       var codeStrList = codeStr.split(",");
       var LatDec = parseFloat(codeStrList[0].trim());
@@ -179,6 +177,4 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <input type="button" value="Search" onclick="codeAddress()"  >
     </div>
     <div id="map-canvas"></div>
-  </body>
-</html>
 

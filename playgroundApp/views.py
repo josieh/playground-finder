@@ -71,9 +71,6 @@ def userSignUp(request):
 
 
 
-def home(request):
-        return HttpResponse('HelloWorld')
-
 # Below is copied from Xing with comments taken out
 # Create your views here.
 
