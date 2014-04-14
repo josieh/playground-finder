@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect, render_to_resp
 from playgroundApp.models import Playground
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import addReviewForm
+import json
 
 def Playground (request):
 	#Playerground=get_object_or_404 (Playground, id=pk)
@@ -23,6 +24,12 @@ def Playground_List(request):
 	context = {
 		'playgrounds': Playground.objects.all()
 	}
+	#playgrounds = Playground.objects.all()
+	#playgrounds_json = json.dumps(playgrounds)
+	#context2 = {
+		#'playgrounds_json':playgrounds_json
+	#}
+	#return render (request, "home.html", context2)
 	return render (request, "home.html", context)
 
 def suggestPlayground(request):
