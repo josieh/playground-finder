@@ -16,7 +16,6 @@
 </div><!--end opening text-->
 </div><!--end title row-->
 
-
 <div class="container">
 <a id="find"></a>
 <div class="row">
@@ -36,6 +35,7 @@
     </div> <!-- end mobile map-->
     
     <div class="table-div" style="max-height: 250px; overflow-y: scroll; margin: 20px inherit;">
+    
     <table class="table">
         <thead>
             <tr>
@@ -44,6 +44,14 @@
             </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
+            {% for playground in playgrounds%}
+                <tr>
+                    <td>{{playground.name}}</td>
+                    <td>{{playground.street}}</td>
+                </tr>
+            {% endfor %}
+=======
             <tr>
                 <td>Chapel Hill-Carrboro YMCA</td>
                 <td>980 Martin Luther King Dr.</td>
@@ -76,6 +84,7 @@
                 <td>Chapel Hill-Carrboro YMCA</td>
                 <td>980 Martin Luther King Dr.</td>
             </tr>
+>>>>>>> f3226ec81604fc35dc56ef801f24ed84738cf7f5
         </tbody>
     </table>
     </div>
