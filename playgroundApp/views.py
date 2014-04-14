@@ -21,7 +21,7 @@ def Playground_List(request):
 		#playgrounds=paginator.page(paginator.num_pages)
 	#return render (request, 'playgroundApp/playground_list.html' {playgrounds: playgrounds})
 	context = {
-		'playgrounds': Playground.object.all()
+		'playgrounds': Playground.objects.all()
 	}
 	return render (request, "home.html", context)
 
