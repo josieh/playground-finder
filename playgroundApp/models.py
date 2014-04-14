@@ -45,13 +45,11 @@ class Playground(models.Model):
     AgeID = models.IntegerField()
     SchoolDistrictID = models.IntegerField()
     Hours = models.TextField()
-    isCertified = models.BooleanField()
     FeaturesID = models.IntegerField()
     Image = models.TextField()
     SafetyFeaturesID = models.IntegerField()
     TransportFeaturesID = models.IntegerField()
-    GeoCoordinateLat = models.DecimalField(max_digits=12, decimal_places =10)
-    GeoCoordinateLon = models.DecimalField(max_digits=12, decimal_places =10)
+    LatLon = models.CharField(max_length=20)
 
     class Meta(object):
         verbose_name_plural = "Playgrounds"
