@@ -21,8 +21,8 @@ class PlaygroundAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': ('PlaygroundID', 'Name', 'Street', 'Zipcode', 'Handicap','AgeID',
-            'SchoolDistrictID', 'Hours', 'isCertified', 'FeaturesID', 'Image',
-            'SafetyFeaturesID', 'TransportFeaturesID', 'GeoCoordinateLat', 'GeoCoordinateLon')
+            'SchoolDistrictID', 'Hours', 'FeaturesID', 'Image',
+            'SafetyFeaturesID', 'TransportFeaturesID', 'LatLon')
         }),
     )
 class SchoolDistrictAdmin(admin.ModelAdmin):
