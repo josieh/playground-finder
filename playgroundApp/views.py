@@ -21,7 +21,7 @@ def Playground_List(request):
 		#playgrounds=paginator.page(paginator.num_pages)
 	#return render (request, 'playgroundApp/playground_list.html' {playgrounds: playgrounds})
 	context = {
-		'playgrounds': Playground.objects.all()
+		'playgrounds': Playground.object.all()
 	}
 	return render (request, "home.html", context)
 
@@ -45,13 +45,13 @@ def suggestPlayground(request):
 
 	#return render (request, 'playgroundApp/new_playground.html', { 'form': form, })
 	return render (request, "playgroundApp/playgroundSuggest.html")
+
 def userProfile (request):
         return (request, "playgroundApp/userProfile.html")
 #User=get_object_or_404 (Playground)
 #return render (request, 'playgroundApp/user_info.html', {"User": User})
 	
 def userLogin (request):
-
 	if request.method=='POST':
 		form=login()
 	else:
@@ -65,12 +65,10 @@ def userLogin (request):
 def userSignUp(request):
 	return  render (request, "plagyroundApp/userSignup.html")
 
-
-
 def home(request):
         return HttpResponse('HelloWorld')
 
-# Below is copied from Xing with comments taken out
+# Below is copied from Xing with comments taken outh
 # Create your views here.
 
 from django.shortcuts import render, render_to_response
@@ -83,7 +81,15 @@ def playgroundList(request):
 	return render (request, "playgroundApp/home.html")
 
 def suggestPlayground(request):
-	return render (request, "playgroundApp/playground_suggest.html")
+	if request.method == 'GET':
+               suggest = addReviewForm()
+        else:
+               suggest =addReviewForm(request.POST)
+               submitdate =datetime.utcnow()
+        if suggest.is_valid():
+               suggest =suggestPlayground.objects.create(name=request.POST['name'], date=submitdate)
+        return HttpResponseRedirect(reverse('playgroundapp_home'))
+        return render(request, 'playgroundApp/playground_suggest.html')
 
 def userProfile (request):
 	return render (request, "playgroundApp/user_profile.html")
@@ -94,9 +100,8 @@ def userLogin (request):
 def userSignUp(request):
 	return  render (request, "playgroundApp/user_signup.html")
 
-def userSuggest(request):
-	return  render (request, "playgroundApp/user_suggest.html")
-def userReview(request):
+
+'''def userReview(request):
        if request.method == 'GET':
                newReview = addReviewForm()
        else:
@@ -106,6 +111,19 @@ def userReview(request):
                newReview =UserReview.objects.create(name=request.POST['name'], date=submitdate)
                return HttpResponseRedirect(reverse('playgroundapp_home'))
        return render(request, 'playgroundApp/new_review.html')
+'''
+
+def userSuggest(request):
+       if request.method == 'GET':
+               newSuggest = addReviewForm()
+       else:
+               newSuggest =addPlayground(request.POST)
+               submitdate =datetime.utcnow()
+       if newSuggest.is_valid():
+               newRenewSuggestview =UserReview.objects.create(name=request.POST['name'], date=submitdate)
+               return HttpResponseRedirect(reverse('playgroundapp_home'))
+       return render(request, 'playgroundApp/user_suggest.html')
 
 def map(request):
         return render (request, "playgroundApp/map.html")
+        
