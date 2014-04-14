@@ -30,9 +30,9 @@
     </div><!-- /input-group -->    
     
     <div class="hidden-md hidden-lg mobile-map">
-    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
+    <iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
         
-    </iframe>-->
+    </iframe>
     </div> <!-- end mobile map-->
     
     <div class="table-div" style="max-height: 250px; overflow-y: scroll; margin: 20px inherit;">
@@ -44,16 +44,6 @@
             </tr>
         </thead>
         <tbody>
-           
-            <script>console.log("Steven is here" + "{{ playgrounds }}");</script>
-            {% for playground in playgrounds %}
-            {# Each "player" is a player model object. #}
-                <tr>    
-                    <td> {{ playground.Name }}</td>
-                    <td> {{ playground.Address }}</td>
-                </tr>
-            {% endfor %}
-            
             <tr>
                 <td>Chapel Hill-Carrboro YMCA</td>
                 <td>980 Martin Luther King Dr.</td>
@@ -75,7 +65,7 @@
                 <td>980 Martin Luther King Dr.</td>
             </tr>
             <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>W
+                <td>Chapel Hill-Carrboro YMCA</td>
                 <td>980 Martin Luther King Dr.</td>
             </tr>
             <tr>
@@ -129,14 +119,10 @@
     </div>
     
 </div><!--end list column-->
-<div class="col-md-7 right-map">
-    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
+<div class="col-md-7 right-map hidden-sm hidden-xs">
+    <iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
         
-    </iframe>-->
-    <div class="container well" style="width: 100%; height: 500px; border: none; padding: 0; margin: 0;">
-    <script>console.log("The data ready to pass is " + playgrounds);</script>
-    {% include "playgroundApp/map.html" with playgrounds=playgrounds %}
-    </div>
+    </iframe>
 </div>
 </div><!--end list detail and map row-->
 

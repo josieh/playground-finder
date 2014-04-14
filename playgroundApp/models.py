@@ -2,206 +2,206 @@ from django.db import models
 
 # Create your models here.
 class User(models.Model):
-    UserID = models.CharField(unique=True, null=False, max_length=200)
-    Name = models.CharField(null=False, max_length=200)
-    Description = models.TextField()
-    Zipcode = models.IntegerField(null=True)
-    Age = models.IntegerField(null= True)
+    userID = models.CharField(unique=True, null=False, max_length=200)
+    name = models.CharField(null=False, max_length=200)
+    description = models.TextField()
+    zipcode = models.IntegerField(null=True)
+    age = models.IntegerField(null= True)
     isMom = models.BooleanField()
     isDad = models.BooleanField()
     isGrandparent = models.BooleanField()
     isOther = models.BooleanField()
-    FavoritesID = models.IntegerField(null=True)
-    Image = models.TextField()
+    favoritesID = models.IntegerField(null=True)
+    image = models.TextField()
 
     class Meta(object):
         verbose_name_plural = "Users"
         #ordering = ('userID',)
     def __unicode__(self):
-        return unicode(self.UserID)
+        return unicode(self.userID)
     def save(self, *args, **kwargs):
-        self.UserID = self.UserID.upper()
+        self.userID = self.userID.upper()
         super(User, self).save(*args, **kwargs)
         
 class FavoritePlaygroundLookup(models.Model):
-    UserID = models.CharField(unique=True, null=False, max_length=200)
-    PlaygroundID = models.IntegerField(unique=True, null=False)
+    userID = models.CharField(unique=True, null=False, max_length=200)
+    playgroundID = models.IntegerField(unique=True, null=False)
     
     class Meta(object):
         verbose_name_plural = "Favorites"
         #ordering = ('userID',)
     def __unicode__(self):
-        return unicode(self.UserID)
+        return unicode(self.userID)
     def save(self, *args, **kwargs):
-        self.UserID = self.UserID.upper()
+        self.userID = self.userID.upper()
         super(User, self).save(*args, **kwargs)
         
 class Playground(models.Model):
-    PlaygroundID = models.IntegerField(unique=True, null=False)
-    Name = models.TextField()
-    Street = models.TextField()
-    Zipcode = models.IntegerField()
-    Handicap = models.BooleanField()
-    AgeID = models.IntegerField()
-    SchoolDistrictID = models.IntegerField()
-    Hours = models.TextField()
-    FeaturesID = models.IntegerField()
-    Image = models.TextField()
-    SafetyFeaturesID = models.IntegerField()
-    TransportFeaturesID = models.IntegerField()
-    LatLon = models.CharField(max_length=20)
+    playgroundID = models.IntegerField(unique=True, null=False)
+    name = models.TextField()
+    street = models.TextField()
+    zipcode = models.IntegerField()
+    handicap = models.BooleanField()
+    ageID = models.IntegerField()
+    schoolDistrictID = models.IntegerField()
+    hours = models.TextField()
+    featuresID = models.IntegerField()
+    image = models.TextField()
+    safetyFeaturesID = models.IntegerField()
+    transportFeaturesID = models.IntegerField()
+    latLon = models.CharField(max_length=20)
 
     class Meta(object):
         verbose_name_plural = "Playgrounds"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.PlaygroundID)
+        return unicode(self.playgroundID)
     def save(self, *args, **kwargs):
         super(Playground, self).save(*args, **kwargs)
 
 class SchoolDistrict(models.Model):
-    SchoolDistrictID = models.IntegerField(unique=True, null=False)
-    DistrictName = models.TextField()
-    ZipcodeStart = models.IntegerField()
-    ZipcodeEnd = models.IntegerField()
+    schoolDistrictID = models.IntegerField(unique=True, null=False)
+    districtname = models.TextField()
+    zipcodeStart = models.IntegerField()
+    zipcodeEnd = models.IntegerField()
     #I am not sure if we need GeoCoordinates or how to model them. Want to be able
     #to have the area on a map that a school district covers. GeoCodes the best way?
-    GeoCoordinates = models.DecimalField(max_digits=12, decimal_places =10)
+    geoCoordinates = models.DecimalField(max_digits=12, decimal_places =10)
 
     class Meta(object):
         verbose_name_plural = "School Districts"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.SchoolDistrictID)
+        return unicode(self.schoolDistrictID)
     def save(self, *args, **kwargs):
-        self.SchoolDistrictID = self.SchoolDistrictID.upper()
+        self.schoolDistrictID = self.schoolDistrictID.upper()
         super(SchoolDistrict, self).save(*args, **kwargs)
 
 class Age(models.Model):
-    AgeID = models.IntegerField(unique=True, null=False)
-    Infant = models.BooleanField()
-    Toddler = models.BooleanField()
-    PreSchooler = models.BooleanField()
-    SchoolAged = models.BooleanField()
-    PreTeen = models.BooleanField()
+    ageID = models.IntegerField(unique=True, null=False)
+    infant = models.BooleanField()
+    toddler = models.BooleanField()
+    preSchooler = models.BooleanField()
+    schoolAged = models.BooleanField()
+    preTeen = models.BooleanField()
 
     class Meta(object):
         verbose_name_plural = "Ages"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.AgeID)
+        return unicode(self.ageID)
     def save(self, *args, **kwargs):
-        #self.AgeID = self.AgeID.upper()
+        #self.ageID = self.ageID.upper()
         super(Age, self).save(*args, **kwargs)
 
 class School(models.Model):
-    SchoolID = models.IntegerField(unique=True, null=False)
-    Name = models.TextField()
-    SchoolDistrictID = models.IntegerField(unique=False)
+    schoolID = models.IntegerField(unique=True, null=False)
+    name = models.TextField()
+    schoolDistrictID = models.IntegerField(unique=False)
 
     class Meta(object):
         verbose_name_plural = "Schools"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.SchoolID)
+        return unicode(self.schoolID)
     def save(self, *args, **kwargs):
-        self.SchoolID = self.SchoolID.upper()
+        self.schoolID = self.schoolID.upper()
         super(School, self).save(*args, **kwargs)
 
 class UserReview(models.Model):
-    ReviewID = models.IntegerField(unique=True, null=False)
-    PlaygroundID = models.IntegerField(null=False)
-    UserID = models.CharField(max_length=200)
-    Stars = models.IntegerField()
-    Review = models.TextField(max_length=1000)
+    reviewID = models.IntegerField(unique=True, null=False)
+    playgroundID = models.IntegerField(null=False)
+    userID = models.CharField(max_length=200)
+    stars = models.IntegerField()
+    review = models.TextField(max_length=1000)
 
     class Meta(object):
         verbose_name_plural = "User Reviews"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.ReviewID)
+        return unicode(self.reviewID)
     def save(self, *args, **kwargs):
-        self.ReviewID = self.ReviewID.upper()
+        self.reviewID = self.reviewID.upper()
         super(UserReview, self).save(*args, **kwargs)
 
 class Features(models.Model):
-    PlaygroundID = models.IntegerField(unique=True, null=False)
-    Swing = models.IntegerField()
-    Slide = models.IntegerField()
-    MonkeyBars = models.IntegerField()
-    SandBox = models.IntegerField()
-    Field = models.IntegerField()
-    PicnicTable = models.IntegerField()
-    Bathrooms = models.IntegerField()
-    ChangingStation = models.IntegerField()
-    Shade = models.IntegerField()
-    BasketballCourt = models.IntegerField()
-    Baseball = models.IntegerField()
+    playgroundID = models.IntegerField(unique=True, null=False)
+    swing = models.IntegerField()
+    slide = models.IntegerField()
+    monkeyBars = models.IntegerField()
+    sandBox = models.IntegerField()
+    field = models.IntegerField()
+    picnicTable = models.IntegerField()
+    bathrooms = models.IntegerField()
+    changingStation = models.IntegerField()
+    shade = models.IntegerField()
+    basketballCourt = models.IntegerField()
+    baseball = models.IntegerField()
 
     class Meta(object):
         verbose_name_plural = "Features"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.PlaygroundID)
+        return unicode(self.playgroundID)
     def save(self, *args, **kwargs):
-        self.PlaygroundID = self.PlaygroundID.upper()
+        self.playgroundID = self.playgroundID.upper()
         super(Features, self).save(*args, **kwargs)
 
 class SafetyFeatures(models.Model):
-    PlaygroundID = models.IntegerField(unique=True, null=False)
+    playgroundID = models.IntegerField(unique=True, null=False)
     ProximityToHighway = models.IntegerField()
-    Fenced = models.BooleanField()
+    fenced = models.BooleanField()
 
     class Meta(object):
         verbose_name_plural = "Safety Features"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.PlaygroundID)
+        return unicode(self.playgroundID)
     def save(self, *args, **kwargs):
-        self.PlaygroundID = self.PlaygroundID.upper()
+        self.playgroundID = self.playgroundID.upper()
         super(SafetyFeatures, self).save(*args, **kwargs)
 
 class TransportationFeatures(models.Model):
-    PlaygroundID = models.IntegerField(unique=True, null=False)
-    BikePath = models.BooleanField()
-    HikingTrail = models.BooleanField()
-    AdjacentParking = models.BooleanField()
-    NearbyParking = models.BooleanField()
-    NoParking = models.BooleanField()
-    ProximityToBus = models.IntegerField()
+    playgroundID = models.IntegerField(unique=True, null=False)
+    bikePath = models.BooleanField()
+    hikingTrail = models.BooleanField()
+    adjacentParking = models.BooleanField()
+    nearbyParking = models.BooleanField()
+    noParking = models.BooleanField()
+    proximityToBus = models.IntegerField()
 
     class Meta(object):
         verbose_name_plural = "Transportation Features"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.PlaygroundID)
+        return unicode(self.playgroundID)
     def save(self, *args, **kwargs):
-        self.PlaygroundID = self.PlaygroundID.upper()
+        self.playgroundID = self.playgroundID.upper()
         super(TransportationFeatures, self).save(*args, **kwargs)
 
 class SuggestPlayground(models.Model):
-    SuggestionID = models.IntegerField(unique=True, null=False)
-    PlaygroundName = models.TextField()
-    Address = models.TextField()
-    Description = models.CharField(max_length=1000)
-    Image = models.TextField()
-    Swing = models.IntegerField()
-    Slide = models.IntegerField()
-    MonkeyBars = models.IntegerField()
-    SandBox = models.IntegerField()
-    Field = models.IntegerField()
-    PicnicTable = models.IntegerField()
-    Bathrooms = models.IntegerField()
-    ChangingStation = models.IntegerField()
-    Shade = models.IntegerField()
-    BasketballCourt = models.IntegerField()
-    Baseball = models.IntegerField()    
+    suggestionID = models.IntegerField(unique=True, null=False)
+    playgroundName = models.TextField()
+    address = models.TextField()
+    description = models.CharField(max_length=1000)
+    image = models.TextField()
+    swing = models.IntegerField()
+    slide = models.IntegerField()
+    monkeyBars = models.IntegerField()
+    sandBox = models.IntegerField()
+    field = models.IntegerField()
+    picnicTable = models.IntegerField()
+    bathrooms = models.IntegerField()
+    changingStation = models.IntegerField()
+    shade = models.IntegerField()
+    basketballCourt = models.IntegerField()
+    baseball = models.IntegerField()    
 
     class Meta(object):
         verbose_name_plural = "Suggested Playgrounds"
         #ordering = ('UserID',)
     def __unicode__(self):
-        return unicode(self.SuggestiontID)
+        return unicode(self.suggestiontID)
     def save(self, *args, **kwargs):
-        self.SuggestionID = self.SuggestionID.upper()
+        self.suggestionID = self.suggestionID.upper()
         super(SuggestPlayground, self).save(*args, **kwargs)

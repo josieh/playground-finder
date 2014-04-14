@@ -5,6 +5,7 @@
 <div class="container">
     
 <h1>User Signup</h1>
+<<<<<<< HEAD
 <div class=row>
 <div class="col-md-6">
         <form role="form" class="form-horizontal">
@@ -27,6 +28,19 @@
         
         <input type="text" class="form-control" placeholder="description" style="border: 1px solid #000;">
         <span class="input-group-btn">
+=======
+<div class="col-md-6 left-info">
+    <div class="input-group">
+    <input type="text" class="col-sm-10 form-control signup-form suggest-text" placeholder="first" style="border: 1px solid #000;">
+    
+    <input type="text" class="col-sm-10 form-control signup-form suggest-text" placeholder="last" style="border: 1px solid #000;">
+
+    <input type="text" class="col-sm-10 form-control signup-form suggest-text" placeholder="zip" style="border: 1px solid #000;">
+    
+    <input type="text" id="datepicker" class="col-sm-10 form-control signup-form suggest-text" placeholder="birthday" style="border: 1px solid #000;">
+   
+    <textarea type="text" class="col-sm-10 form-control signup-form suggest-text" cols="20" rows="5" placeholder="description" style="border: 1px solid #000;"></textarea>
+>>>>>>> ae47abcb65ed2a45fdfc9dccc10bcde995097471
     </div>
 </div>
 
@@ -45,24 +59,46 @@
           </div>
           <div id="user-description">
             <div class="panel-body">
-                <ul>
-                    <li><input type="radio">Working Mom</li>
-                    <li><input type="radio">Working Dad</li>
-                    <li><input type="radio">Stay-at-home Mom</li>
-                    <li><input type="radio">Stay-at-home Dad</li>
-                    <li><input type="radio">Grandparent</li>
-                    <li><input type="radio">Other</li>
-                </ul>
+                <div class="radio">
+                    <label>
+                      <input type="radio" name="description" id="description-parent" value="handicap-yes" checked>
+                      Parent
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="description" id="description-grandparent" value="handicap-no">
+                        Grandparent
+                    </label>
+                  </div>
+                   <div class="radio">
+                    <label>
+                      <input type="radio" name="description" id="description-" value="handicap-idk">
+                        Sibling
+                    </label>
+                   </div>
+                   <div class="radio">
+                    <label>
+                      <input type="radio" name="description" id="description-" value="handicap-idk">
+                        Don't Know
+                    </label>
+                   </div>
+                   <div class="radio">
+                    <label>
+                      <input type="radio" name="description" id="description-" value="handicap-idk">
+                        Don't Know
+                    </label>
+                   </div>
             </div>
           </div>
           
-          <input type="text" class="form-control" placeholder="favorite park" style="border: 1px solid #000;">
+          <input type="text" class="form-control signup-form" placeholder="favorite park" style="border: 1px solid #000;">
              <!---make this toggle up TOP JOSIE-->
-            <input type="text" class="form-control" placeholder="if other please specify" style="border: 1px solid #000;">
+            <input type="text" class="form-control signup-form" placeholder="if other please specify" style="border: 1px solid #000;">
         
         </div>
         
-        <button id="submit">Submit</button>
+        <button type="submit" class="btn btn-default user-submit">Submit</button>
         
     </div>
 </div> <!---end right column-->
