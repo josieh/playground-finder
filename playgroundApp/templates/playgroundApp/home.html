@@ -20,7 +20,7 @@
 <div class="container">
 <a id="find"></a>
 <div class="row">
-<h1>Find a Playground</h1>
+<h1>Find a PLayground</h1>
 <div class="col-md-5 left-info">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="search" style="border: 1px solid #000; border-right: none;">
@@ -44,10 +44,11 @@
             </tr>
         </thead>
         <tbody>
-        
+           
+            <script>console.log("Steven is here" + "{{ playgrounds }}");</script>
             {% for playground in playgrounds %}
             {# Each "player" is a player model object. #}
-                <tr>
+                <tr>    
                     <td> {{ playground.Name }}</td>
                     <td> {{ playground.Address }}</td>
                 </tr>
@@ -133,7 +134,8 @@
         
     </iframe>-->
     <div class="container well" style="width: 100%; height: 500px; border: none; padding: 0; margin: 0;">
-    {% include "playgroundApp/map.html" %}
+    <script>console.log("The data ready to pass is " + playgrounds);</script>
+    {% include "playgroundApp/map.html" with playgrounds=playgrounds %}
     </div>
 </div>
 </div><!--end list detail and map row-->

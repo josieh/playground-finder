@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
+
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Geocoding service</title>
@@ -14,7 +12,7 @@
         position: absolute;
         top: 5px;
         left: 50%;
-        margin-left: -100px;
+        margin-left: -150px;
         z-index: 5;
         background-color: #fff;
         padding: 5px;
@@ -23,13 +21,12 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-      
+
     var playgrounds = [];
     var playground = [];
     {% for playground in playgrounds %}
         playground = [];
-        playground.push({{playground.GeoCoordinateLat}});
-        playground.push({{playground.GeoCoordinateLon}});
+        playground.push({{playground.LatLon}});
         playgrounds.push(playground);
     {% endfor %}
     console.log(playgrounds);
@@ -72,8 +69,8 @@ function initialize() {
   var image = "{{ STATIC_URL }}marker_purple.png";
   
     for(var i=0; i<playgrounds.length;i++){
-    var marker1 = new google.maps.Marker({
-      position: new google.maps.LatLng(playgrounds[i][0],playgrounds[i][1]),
+    var marker2 = new google.maps.Marker({
+      position: new google.maps.LatLon(playgrounds[i][0]),
       map: map,
       icon:image,
       title:"Marker"});
@@ -168,6 +165,4 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <input type="button" value="Search" onclick="codeAddress()"  >
     </div>
     <div id="map-canvas"></div>
-  </body>
-</html>
 
