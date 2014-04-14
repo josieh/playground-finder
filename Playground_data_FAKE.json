@@ -15,8 +15,7 @@
             "Image": "http://placehold.it/32x32",
             "SafetyFeaturesID": 2,
             "TransportFeaturesID": 1,
-            "GeoCoordinateLat": 40.751614,
-            "GeoCoordinateLon": -84.111874,
+            "LatLon": "40.751614, -84.111874"
         }
     },
     {
@@ -35,8 +34,7 @@
             "Image": "http://placehold.it/32x32",
             "SafetyFeaturesID": 2,
             "TransportFeaturesID": 1,
-            "GeoCoordinateLat": 35.948489,
-            "GeoCoordinateLon": -79.057834,
+            "LatLon": "35.948489, -79.057834"
         }
     },
     {
@@ -55,8 +53,7 @@
             "Image": "http://placehold.it/32x32",
             "SafetyFeaturesID": 2,
             "TransportFeaturesID": 1,
-            "GeoCoordinateLat": 36.096117,
-            "GeoCoordinateLon": -79.273498,
+            "LatLon": "36.096117, -79.273498"
         }
     }
 ]
