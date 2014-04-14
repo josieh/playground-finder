@@ -5,7 +5,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import addReviewForm
 import json
 
-
 def Playground_List(request):
 	#playground_list=Playground.object.all()
 	#paginator=Paginator(playground_list, 10)
@@ -72,12 +71,7 @@ def userSignUp(request):
 def home(request):
         return HttpResponse('HelloWorld')
 
-# Below is copied from Xing with comments taken outh
 
-
-# Create your views here.
-
-from django.shortcuts import render, render_to_response
 
 
 def playgroundDetail (request):
