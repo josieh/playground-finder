@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 from playgroundApp import views
 
 urlpatterns=patterns('',
-	url(r'^$', views.playgroundList, name='playgroundapp_home'),
+	url(r'^$', views.Playground_List, name='playgroundapp_home'),
 	url(r'^playgroundapp/playground_info$', views.playgroundDetail, name='playground_info'),
 	url(r'^playgroundapp/playground_suggest$', views.suggestPlayground, name='userSuggest'),
 	url(r'^playgroundapp/user_profile$', views.userProfile, name='userProfile'),

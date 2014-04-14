@@ -5,10 +5,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import addReviewForm
 import json
 
-def Playground (request):
-	#Playerground=get_object_or_404 (Playground, id=pk)
-	#return render (request, 'playgroundApp/playground_info.html', {"Playground": Playground})
-	return render (request, "playgroundApp/playground_info.html")
 def Playground_List(request):
 	#playground_list=Playground.object.all()
 	#paginator=Paginator(playground_list, 10)
@@ -21,8 +17,9 @@ def Playground_List(request):
 	#except Emptypage:
 		#playgrounds=paginator.page(paginator.num_pages)
 	#return render (request, 'playgroundApp/playground_list.html' {playgrounds: playgrounds})
+	playgrounds = Playground.objects.all()
 	context = {
-		'playgrounds': Playground.objects.all()
+		'playgrounds': playgrounds
 	}
 	#playgrounds = Playground.objects.all()
 	#playgrounds_json = json.dumps(playgrounds)
@@ -30,7 +27,7 @@ def Playground_List(request):
 		#'playgrounds_json':playgrounds_json
 	#}
 	#return render (request, "home.html", context2)
-	return render (request, "home.html", context)
+	return render (request, "playgroundApp/home.html", context)
 
 def suggestPlayground(request):
 	#if request.method == 'GET':
