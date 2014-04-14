@@ -4,7 +4,6 @@ from playgroundApp.models import Playground
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import addReviewForm
 
-
 def Playground (request):
 	#Playerground=get_object_or_404 (Playground, id=pk)
 	#return render (request, 'playgroundApp/playground_info.html', {"Playground": Playground})
@@ -48,8 +47,8 @@ def suggestPlayground(request):
 	return render (request, "playgroundApp/playgroundSuggest.html")
 def userProfile (request):
         return (request, "playgroundApp/userProfile.html")
-	#User=get_object_or_404 (Playground)
-        #return render (request, 'playgroundApp/user_info.html', {"User": User})
+#User=get_object_or_404 (Playground)
+#return render (request, 'playgroundApp/user_info.html', {"User": User})
 	
 def userLogin (request):
 
