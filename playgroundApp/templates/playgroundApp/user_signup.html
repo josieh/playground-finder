@@ -46,34 +46,32 @@
 
 
 
-<div class="col-md-6 right-info"> <!---start right column-->
+<div class="col-md-6 right-info col-sm-8 col-xs-12 col-lg-6"> <!---start right column-->
     
     <div class="panel-group">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h4 class="panel-title">
-              
-                Which best describes you? 
-              
+                Which best describes you?
             </h4>
           </div>
           <div id="user-description">
             <div class="panel-body">
                 <div class="radio">
                     <label>
-                      <input type="radio" name="description" id="description-parent" value="handicap-yes" checked>
+                      <input type="radio" name="description" id="description-parent" value="parent">
                       Parent
                     </label>
                   </div>
                   <div class="radio">
                     <label>
-                      <input type="radio" name="description" id="description-grandparent" value="handicap-no">
+                      <input type="radio" name="description" id="description-grandparent" value="grandparent">
                         Grandparent
                     </label>
                   </div>
                    <div class="radio">
                     <label>
-                      <input type="radio" name="description" id="description-" value="handicap-idk">
+                      <input type="radio" name="description" id="description-sibling" value="sibling">
                         Sibling
                     </label>
                    </div>
@@ -92,8 +90,13 @@
             </div>
           </div>
           
-          <input type="text" class="form-control signup-form" placeholder="favorite park" style="border: 1px solid #000;">
-             <!---make this toggle up TOP JOSIE-->
+          
+             <select class="form-control signup-form" placeholder="favorite park" style="border: 1px solid #000;">
+                <option value="select">Favorite Playground</option>
+                <option value="CHC">Chapel Hill-Carrboro YMCA</option>
+                <option value="FP2">Fun Playground 2</option>
+                <option value="SM">Slides and More</option>
+              </select>
             <input type="text" class="form-control signup-form" placeholder="if other please specify" style="border: 1px solid #000;">
         
         </div>
