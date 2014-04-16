@@ -46,7 +46,7 @@
         <tbody>
             {% for playground in playgrounds%}
                 <tr>
-                    <td>{{playground.name}}</td>
+                    <td><a href="{{ TEMPLATE_DIRS }}playgroundapp/playground_info/{{playground.id}}">{{playground.name}}</a></td>
                     <td>{{playground.street}}</td>
                 </tr>
             {% endfor %}

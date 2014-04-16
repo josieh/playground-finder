@@ -3,33 +3,11 @@
         "pk": 1,
         "model": "playgroundApp.SchoolDistrict",
         "fields": {
-            "SchoolDistrictID": 0,
-            "DistrictName": "Chapel Hill-Carrboro City Schools",
-            "ZipcodeStart": 27569,
-            "ZipcodeEnd": 27531,
-            "GeoCoordinates": 93867
-        }
-    },
-    {
-        "pk": 2,
-        "model": "playgroundApp.SchoolDistrict",
-        "fields": {
-            "SchoolDistrictID": 1,
-            "DistrictName": "Durham Public Schools",
-            "ZipcodeStart": 27516,
-            "ZipcodeEnd": 27596,
-            "GeoCoordinates": 91139
-        }
-    },
-    {
-        "pk": 3,
-        "model": "playgroundApp.SchoolDistrict",
-        "fields": {
-            "SchoolDistrictID": 2,
-            "DistrictName": "Orange County Schools",
-            "ZipcodeStart": 27586,
-            "ZipcodeEnd": 27597,
-            "GeoCoordinates": 91914
+            "schoolDistrictID": 2,
+            "districtname": "Chapel Hill-Carrboro City Schools",
+            "zipcodeStart": 2,
+            "zipcodeEnd": 2,
+            "geoCoordinates": 9
         }
     }
 ]

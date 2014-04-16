@@ -2,40 +2,53 @@
 
 {% block content %}
 <div class="container">
-<h1>Playground Detail</h1>
-
+<h1>{{ playground.name }}</h1>
 <div class=row>
 <div class="col-md-5 left-info">    
     <div class="table-div" style="max-height: 440px; overflow-y: scroll; margin: 20px inherit;">
     <table class="table">
-    <thead>
-        <h3>Name of Playground</h3>
-    </thead>
     <tbody>
     <tr>
-          <h6>Address</h6> <p>Address goes here</p>
+          <h6>Address</h6> <p>{{ playground.street }} {{ playground.zipcode }}</p>
     </tr>
     <tr>
-        <h6>Suitable for Ages</h6> <p>6-12</p>
+        <h6>Suitable for Ages</h6>
+            <span style="display: inline">
+                <p id="infants" style="display: inline">Infants,</p>
+                <p id="toddlers" style="display: inline">Toddlers,</p>
+                <p id="preSchool" style="display: inline">Pre-School Aged</p>
+                <p id="schoolAge" style="display: inline">School Aged,</p>
+                <p id="preTeen" style="display: inline">Pre-Teens</p>
+            </span>
     </tr>
-    <tr> <h6>School District</h6> <p>New Hope</p>
+    
+    <tr> <h6>School District</h6> <p>{{ schoolDistrict.districtname }}</p>
     </tr> 
     <tr>
-        <h6>Transportation</h6> <p>NS, NU</p>
+        <h6>Transportation</h6>
+            <ul>
+                <li id="bike">Nearby Bike Path</li>
+                <li id="hike">Hiking Trails</li>
+                <li id="noPark">No Parking</li>
+                <li id="park">On-Site Parking</li>
+                <li id="nearPark">Nearby Parking</li>
+                <li id="bus">{{transport.proximityToBus}} Miles from a Bus Line</li>
+            </ul>
     </tr>
     <tr>
-        <h6>Hours</h6> <p>Dawn to dusk</p>
+        <h6>Hours</h6> <p>{{ playground.hours }}</p>
     </tr>
     <tr>
-        <h6>Features</h6>
+        <h6>Features</h6
         <ul>
-        <li>Swings</li>
-        <li>Parking</li>
-        <li>Picnic tables</li>
-        <li>Pool</li>
-        <li>Baseball field</li>
-        <li>Tennis courts</li>
-        <li>Basketball courts</li>
+        <li>Swings: {{ features.swing }}</li>
+        <li>Slides: {{ features.slide }}</li>
+        <li>Monkey Bars: {{ features.monkeyBars }}</li>
+        <li>Sand Boxes: {{ features.sandBox }} </li>
+        <li>Fields: {{ features.field }}</li>
+        <li>Picnic Tables: {{ features.picnicTable }}</li>
+        <li>Bathrooms: {{ features.bathrooms }} </li>
+        <li>Changing Stations: {{ features.changingStation }}</li>
         </ul>
     </tr>
     </tbody>
@@ -43,39 +56,35 @@
 </div>
 </div>
 <div class="col-md-7">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="{{ STATIC_URL }}image1.jpg">
-      <div class="carousel-caption">
-        <h2>caption goes herey if we want!</h2>
-      </div>
-    </div>
-    <div class="item">
-      <img src="{{ STATIC_URL }}image2.jpg">
-      <div class="carousel-caption">
-      </div>
-    </div>
-      <div class="item">
-      <img src="{{ STATIC_URL }}image3.jpg">
-      <div class="carousel-caption">
-      </div>
-      </div>
-    </div>
-
-
-  <!-- Controls -->
-
+  <img src= {{ playground.image }}>
 </div>
 </div>
 </div>
 </div>
+<script>
+    ageArray = new Array;
+    ageArray = ["{{age.infant}}", "{{age.toddler}}", "{{age.preSchooler}}", "{{age.schoolAged}}", "{{age.preTeen}}"];
+    console.log(ageArray);
+    console.log(ageArray[1]);
+    var test = ageArray[1] == "False"
+    console.log(test);
+    
+    $(function() {
+        if (ageArray[0] == "False"){
+            $("#infants").hide();
+        }
+        if (ageArray[1] == "False"){
+            $("#toddlers").hide();
+        }
+        if (ageArray[2] == "False"){
+            $("#preSchool").hide();
+        }
+        if (ageArray[3] == "False"){
+            $("#schoolAge").hide();
+        }
+        if (ageArray[4] == "False"){
+            $("#preTeen").hide();
+        }
+    })
+</script>
 {% endblock %}

@@ -27,7 +27,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="..{{ TEMPLATE_DIRS }}/#find">Find</a></li>
-              <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/playground_suggest">Add</a></li>
+              <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/add-playground">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/user_signup">Sign Up</a></li>
@@ -48,11 +48,11 @@
         </div><!-- /.container -->
     </nav>
 
-    {% block content %}{% endblock %}
-    
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    {% block content %}{% endblock %}
     <script>
         $(function() {
             $('a[href*=#]:not([href=#])').click(function() {

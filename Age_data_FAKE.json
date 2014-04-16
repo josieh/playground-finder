@@ -3,14 +3,12 @@
         "pk": 1,
         "model": "playgroundApp.Age",
         "fields": {
-                "AgeID": 1,
-                "ZeroTwo": true,
-                "TwoFour": true,
-                "FourSix": true,
-                "SixEight": true,
-                "EightTen": true,
-                "TenTwelve": true,
-                "TwelveFourteen": true
+                "ageID": 1,
+                "infant": true,
+                "toddler": false,
+                "preSchooler": true,
+                "schoolAged": true,
+                "preTeen": true
         }
     }
 ]
