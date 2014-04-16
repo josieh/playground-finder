@@ -19,9 +19,9 @@
 <div class="container">
 <a id="find"></a>
 <div class="row">
-<h1>Find a PLayground</h1>
+<h1>Find a Playground</h1>
 <div class="col-md-5 left-info">
-    <div class="input-group">
+    <div class="input-group input-search" style="display: table">
       <input type="text" class="form-control" placeholder="search" style="border: 1px solid #000; border-right: none;">
         <span class="input-group-btn">
             <button class="btn btn-default" type="button" style="background-color: hsla(58, 100%, 75%, 0.2); border: 1px solid #000; border-left: none;"><span class="glyphicon glyphicon-search" style="color: hsla(174, 94%, 31%, 0.5);"></span></button>
@@ -29,9 +29,9 @@
     </div><!-- /input-group -->    
     
     <div class="hidden-md hidden-lg mobile-map">
-    <iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
+    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
         
-    </iframe>
+    </iframe>-->
     </div> <!-- end mobile map-->
     
     <div class="table-div" style="max-height: 250px; overflow-y: scroll; margin: 20px inherit;">
@@ -44,47 +44,12 @@
             </tr>
         </thead>
         <tbody>
-<<<<<<< HEAD
             {% for playground in playgrounds%}
                 <tr>
                     <td>{{playground.name}}</td>
                     <td>{{playground.street}}</td>
                 </tr>
             {% endfor %}
-=======
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
-            <tr>
-                <td>Chapel Hill-Carrboro YMCA</td>
-                <td>980 Martin Luther King Dr.</td>
-            </tr>
->>>>>>> f3226ec81604fc35dc56ef801f24ed84738cf7f5
         </tbody>
     </table>
     </div>
@@ -101,8 +66,84 @@
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
                 <form action="">
-                    <input type="checkbox" name="feature" value="Bike">Feature One<br>
-                    <input type="checkbox" name="feature" value="Car">Feature Two 
+                    <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Swings
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Slides
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Monkey Bars
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Sandbox
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Fence
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Field
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                      Picnic Tables
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                    Hiking Trails
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                    Bathrooms
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                    Changing station
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                    Shade
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                    Basketball court
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="">
+                    Baseball Field
+                    </label>
+                </div> 
                 </form>
             </div>
           </div>
@@ -128,10 +169,13 @@
     </div>
     
 </div><!--end list column-->
-<div class="col-md-7 right-map hidden-sm hidden-xs">
-    <iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
+<div class="col-md-7 right-map">
+    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
         
-    </iframe>
+    </iframe>-->
+    <div class="container well" style="width: 100%; height: 500px; border: none; padding: 0; margin: 0;">
+    {% include "playgroundApp/map.html" %}
+    </div>
 </div>
 </div><!--end list detail and map row-->
 

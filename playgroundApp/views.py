@@ -54,7 +54,12 @@ def userSignUp(request):
 def home(request):
         return HttpResponse('HelloWorld')
 
-
+def playgroundGeoCodes(request):
+	playgrounds = Playground.objects.all()
+	context = {
+		'playgrounds': playgrounds
+	}
+	return render (request, "playgroundApp/map.html", context)
 
 
 def playgroundDetail (request):
