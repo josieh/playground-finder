@@ -7,6 +7,10 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
+        
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -54,6 +58,8 @@
     <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script>
+        $(document).ready (function(){
+            console.log("doc loaded");
         $(function() {
             $('a[href*=#]:not([href=#])').click(function() {
               if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -89,6 +95,8 @@
         //ACCORDION
         
         //end accordion
+        
+        });
     </script>
 </body>
 </html>
