@@ -38,7 +38,7 @@ def userProfile (request):
 #return render (request, 'playgroundApp/user_info.html', {"User": User})
 	
 def userLogin (request):
-	if request.method=='POST':
+	if request.method=='GET':
 		form=login()
 	else:
 		form=login(request.GET)
