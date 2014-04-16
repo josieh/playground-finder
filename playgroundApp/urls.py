@@ -12,8 +12,7 @@ urlpatterns=patterns('',
 	url(r'^playgroundapp/user_login$', views.userLogin, name='userLogin'),
 
         #urls for the suggest a playground page
-        url(r'playground_suggest.html', views.suggestPlayground, name='post_form_suggest'),
+
         url(r'^playgroundapp/map$', views.map, name='map'),
-
-
+        url(r'^playgroundapp/add-playground$', views.formSuggest, name='form_suggest'),
 )
