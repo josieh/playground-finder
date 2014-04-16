@@ -36,6 +36,7 @@
     {% for playground in playgrounds %}
       playground = [];
       playground.push({{playground.latLon}});
+      playground.push("{{playground.name}}")
       playgrounds.push(playground);
     {% endfor %}
   
@@ -75,30 +76,32 @@ function initialize() {
   map.setOptions({styles: styles});
   
   var image = "{{ STATIC_URL }}marker_purple.png";
+  var infowindow = new google.maps.InfoWindow();
+  var bounds = new google.maps.LatLngBounds();
   
     for(var i=0; i<playgrounds.length;i++){
-      
+      console.log(playgrounds[i]);
+      console.log(playgrounds[i][2]);
+      console.log(playgrounds[i][1]);
       var codeStr = playgrounds[i].toString();
       var codeStrList = codeStr.split(",");
       var LatDec = parseFloat(codeStrList[0].trim());
       var LonDec = parseFloat(codeStrList[1].trim());
-      var marker1 = new google.maps.Marker({
-      position: new google.maps.LatLng(LatDec, LonDec),
-      map: map,
-      icon:image,
-      title:"Marker"});
+      var info = playgrounds[i][2];
+      var latLngMarker = new google.maps.LatLng(LatDec, LonDec);
+      
+      var marker = new google.maps.Marker({
+        position: latLngMarker,
+        map: map,
+        info: info,
+        icon:image,
+        title:"Marker"});
+      
+      google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(this.info);
+            infowindow.open(map, this);
+        });
   }
-  
-  var marker1 = new google.maps.Marker({
-      position: new google.maps.LatLng(35.91784,-79.057454),
-      map: map,
-      icon:image,
-      title:"Home"});
-  var marker1 = new google.maps.Marker({
-      position: new google.maps.LatLng(35.9102148,-79.0518835),
-      map: map,
-      icon:image,
-      title:"Carroll"});
 
   // Try HTML5 geolocation
   if(navigator.geolocation) {
