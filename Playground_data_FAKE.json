@@ -5,7 +5,7 @@
         "fields": {
             "playgroundID": 1,
             "name": "Burch Avenue Park",
-            "street": "816 Burch Ave",
+            "street": "816 Burch Ave, Durham, NC",
             "zipcode": 27701,
             "handicap": true,
             "ageID": 1,
@@ -24,7 +24,7 @@
         "fields": {
             "playgroundID": 2,
             "name": "Orange United Methodist Church",
-            "street": "1220 Martin Luther King Jr. Blvd",
+            "street": "1220 Martin Luther King Jr. Blvd, Chapel Hill, NC",
             "zipcode": 27530,
             "handicap": false,
             "ageID": 1,
@@ -43,7 +43,7 @@
         "fields": {
             "playgroundID": 3,
             "name": "Holt St Park",
-            "street": "411 W. Holt St",
+            "street": "411 W. Holt St., Mebane, NC",
             "zipcode": 27307,
             "handicap": false,
             "ageID": 1,

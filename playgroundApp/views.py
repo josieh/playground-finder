@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.http import HttpResponseRedirect
-from playgroundApp.models import Playground
+from playgroundApp.models import Playground, Features, SchoolDistrict, Age
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import playgroundSuggest
 from django.core.urlresolvers import reverse
@@ -62,8 +62,32 @@ def playgroundGeoCodes(request):
 	return render (request, "playgroundApp/map.html", context)
 
 
-def playgroundDetail (request):
-	return render (request, "playgroundApp/playground_info.html")
+def playgroundDetail (request, pk):
+	playground = get_object_or_404(Playground, id=pk)
+	
+	features = Features.objects.all()
+	features = features.filter(playgroundID=pk)
+	features = features[0]
+	
+	
+	schoolDistrict = SchoolDistrict.objects.all()
+	schoolDistrict = schoolDistrict.filter(schoolDistrictID = playground.schoolDistrictID)
+	schoolDistrict = schoolDistrict[0]
+	
+	ages = Age.objects.all()
+	ages = ages.filter(ageID = playground.ageID)
+	ages = ages[0]
+	ageList = []
+	if ages.infant == True:
+		ageList.append("Infants")
+	
+	context = {
+		'playground':playground,
+		'schoolDistrict':schoolDistrict,
+		'features':features,
+		'age':ageList,
+	}
+	return render (request, "playgroundApp/playground_info.html", context)
 
 def playgroundList(request):
 	return render (request, "playgroundApp/home.html")

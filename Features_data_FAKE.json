@@ -3,90 +3,18 @@
         "pk": 1,
         "model": "playgroundApp.Features",
         "fields": {
-            "PlaygroundID": 0,
-            "Swing": 3,
-            "Slide": 3,
-            "MonkeyBars": 3,
-            "SandBox": 1,
-            "Field": 2,
-            "PicnicTable": 3,
-            "Bathrooms": 0,
-            "ChangingStation": 2,
-            "Shade": 4,
-            "BasketballCourt": 4,
-            "Baseball": 4
-        }
-    },
-    {
-        "pk": 2,
-        "model": "playgroundApp.Features",
-        "fields": {
-            "PlaygroundID": 1,
-            "Swing": 2,
-            "Slide": 2,
-            "MonkeyBars": 1,
-            "SandBox": 3,
-            "Field": 3,
-            "PicnicTable": 3,
-            "Bathrooms": 0,
-            "ChangingStation": 4,
-            "Shade": 1,
-            "BasketballCourt": 0,
-            "Baseball": 0
-        }
-    },
-    {
-        "pk": 3,
-        "model": "playgroundApp.Features",
-        "fields": {
-            "PlaygroundID": 2,
-            "Swing": 0,
-            "Slide": 3,
-            "MonkeyBars": 4,
-            "SandBox": 1,
-            "Field": 1,
-            "PicnicTable": 1,
-            "Bathrooms": 0,
-            "ChangingStation": 3,
-            "Shade": 2,
-            "BasketballCourt": 3,
-            "Baseball": 3
-        }
-    },
-    {
-        "pk": 4,
-        "model": "playgroundApp.Features",
-        "fields": {
-            "PlaygroundID": 3,
-            "Swing": 2,
-            "Slide": 0,
-            "MonkeyBars": 0,
-            "SandBox": 4,
-            "Field": 2,
-            "PicnicTable": 4,
-            "Bathrooms": 1,
-            "ChangingStation": 3,
-            "Shade": 2,
-            "BasketballCourt": 0,
-            "Baseball": 0
-        }
-    },
-    {
-        "pk": 5,
-        "model": "playgroundApp.Features",
-        "fields": {
-            "PlaygroundID": 4,
-            "Swing": 3,
-            "Slide": 2,
-            "MonkeyBars": 1,
-            "SandBox": 3,
-            "Field": 4,
-            "PicnicTable": 2,
-            "Bathrooms": 2,
-            "ChangingStation": 0,
-            "Shade": 1,
-            "BasketballCourt": 3,
-            "Baseball": 1
+            "playgroundID": 1,
+            "swing": 3,
+            "slide": 3,
+            "monkeyBars": 3,
+            "sandBox": 1,
+            "field": 2,
+            "picnicTable": 3,
+            "bathrooms": 0,
+            "changingStation": 2,
+            "shade": 4,
+            "basketballCourt": 4,
+            "baseball": 4
         }
     }
 ]
