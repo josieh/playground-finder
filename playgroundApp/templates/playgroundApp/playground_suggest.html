@@ -9,30 +9,26 @@
     <form role="form" class="form-horizontal">
     <div class="form-group">
         <div class="col-sm-10 suggest-form"> 
-            <input type="text" class="form-control suggest-text" id="name" placeholder="name" style="border: 1px solid #000;">
+            <input type="text" class="form-control suggest-text" placeholder="name" style="border: 1px solid #000;">
         </div>
         <div class="col-sm-10 suggest-form">    
-            <input type="text" class="form-control suggest-text" id="address" placeholder="street address" style="border: 1px solid #000;">
+            <input type="text" class="form-control suggest-text" placeholder="street address" style="border: 1px solid #000;">
         </div>
         <div class="col-sm-10 suggest-form"> 
+<<<<<<< Updated upstream
             <input type="text" class="form-control suggest-text" id="city" placeholder="city" style="border: 1px solid #000;">
+=======
+            <input type="text" id="tags" class="form-control suggest-text" placeholder="city" style="border: 1px solid #000;">
+>>>>>>> Stashed changes
         </div>
         <div class="col-sm-10 suggest-form"> 
-            <input type="text" class="form-control suggest-text" id="hours" placeholder="hours open" style="border: 1px solid #000;">
+            <input type="text" class="form-control suggest-text" placeholder="hours open" style="border: 1px solid #000;">
         </div>
         <div class="col-sm-10 suggest-form"> 
-            <textarea type="text" class="form-control suggest-text" id="description" cols="20" rows="5" placeholder="description" style="border: 1px solid #000;"></textarea>
+            <textarea type="text" class="form-control suggest-text" cols="20" rows="5" placeholder="description" style="border: 1px solid #000;"></textarea>
         </div>
        
     </div><!--end form group-->
-    </form>
-    <form action='/playgroundapp/new_suggest.html' method='get' role="form" class="form-horizontal">{% csrf_token %}
-        <div class="form-group">
-       {{ form.playgroundName }}
-        {{ form.address }}
-        {{ form.description }}
-        </div>
-    <input type='submit' value='Submit'/>
     </form>
     </div>
     
