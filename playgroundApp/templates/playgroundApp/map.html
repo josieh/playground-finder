@@ -1,6 +1,12 @@
-<!DOCTYPE html>
 <html>
   <head>
+    <!--<link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
+    <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
+    -->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <title>Geocoding service</title>
@@ -23,16 +29,15 @@
     </style>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script>
-      
+    
+    
     var playgrounds = [];
     var playground = [];
     {% for playground in playgrounds %}
-        playground = [];
-        playground.push({{playground.GeoCoordinateLat}});
-        playground.push({{playground.GeoCoordinateLon}});
-        playgrounds.push(playground);
+      playground = [];
+      playground.push({{playground.latLon}});
+      playgrounds.push(playground);
     {% endfor %}
-    console.log(playgrounds);
   
       
 var geocoder;
@@ -72,8 +77,13 @@ function initialize() {
   var image = "{{ STATIC_URL }}marker_purple.png";
   
     for(var i=0; i<playgrounds.length;i++){
-    var marker1 = new google.maps.Marker({
-      position: new google.maps.LatLng(playgrounds[i][0],playgrounds[i][1]),
+      
+      var codeStr = playgrounds[i].toString();
+      var codeStrList = codeStr.split(",");
+      var LatDec = parseFloat(codeStrList[0].trim());
+      var LonDec = parseFloat(codeStrList[1].trim());
+      var marker1 = new google.maps.Marker({
+      position: new google.maps.LatLng(LatDec, LonDec),
       map: map,
       icon:image,
       title:"Marker"});
@@ -170,4 +180,3 @@ google.maps.event.addDomListener(window, 'load', initialize);
     <div id="map-canvas"></div>
   </body>
 </html>
-

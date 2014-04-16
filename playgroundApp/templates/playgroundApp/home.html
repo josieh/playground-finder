@@ -16,7 +16,6 @@
 </div><!--end opening text-->
 </div><!--end title row-->
 
-
 <div class="container">
 <a id="find"></a>
 <div class="row">
@@ -36,6 +35,7 @@
     </div> <!-- end mobile map-->
     
     <div class="table-div" style="max-height: 250px; overflow-y: scroll; margin: 20px inherit;">
+    
     <table class="table">
         <thead>
             <tr>
@@ -44,15 +44,13 @@
             </tr>
         </thead>
         <tbody>
-        
-            {% for playground in playgrounds %}
-            {# Each "player" is a player model object. #}
+            {% for playground in playgrounds%}
                 <tr>
-                    <td> {{ playground.Name }}</td>
-                    <td> {{ playground.Address }}</td>
+                    <td>{{playground.name}}</td>
+                    <td>{{playground.street}}</td>
                 </tr>
             {% endfor %}
-            
+
         </tbody>
     </table>
     </div>
