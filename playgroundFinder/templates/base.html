@@ -37,7 +37,7 @@
                     <form class="navbar-form navbar-left" role="search">
                         <div class="form-group">
                           <input type="text" class="form-control" placeholder="Username">
-                            <input type="text" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" placeholder="Password">
                         </div>
                         <button type="submit" class="btn btn-default login-submit">Submit</button>
                       </form>
@@ -48,7 +48,7 @@
         </div><!-- /.container -->
     </nav>
 
-        {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.min.js"></script>
@@ -73,6 +73,22 @@
         $(function() {
             $( "#datepicker" ).datepicker();
         }); //end datepicker
+        
+        //DROPDOWN
+        $(function() {
+            var availableTags = [
+              "Chapel Hill",
+              "Durham",
+              "Carrboro"
+            ];
+            $( "#tags" ).autocomplete({
+              source: availableTags
+            });
+          }); //end dropdown
+        
+        //ACCORDION
+        
+        //end accordion
     </script>
 </body>
 </html>

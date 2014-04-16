@@ -1,6 +1,12 @@
 from django import forms
-class login (forms.Form):
-       name=forms.CharField(max_length=50)
+from playgroundApp import models
 
-class addReviewForm (forms.Form):
-      name = forms.CharField(max_length=50)
+class login (forms.Form):
+       name = forms.CharField(max_length=50)
+
+#class addReviewForm (forms.Form):
+      #name = forms.CharField(max_length=50)
+      
+class playgroundSuggest (forms.ModelForm):
+	class Meta:
+		model = models.SuggestPlayground
