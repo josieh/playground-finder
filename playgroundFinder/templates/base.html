@@ -31,20 +31,14 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li class="active"><a href="..{{ TEMPLATE_DIRS }}/#find">Find</a></li>
-              <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/playground_suggest">Add</a></li>
+              <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/add-playground">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/user_signup">Sign Up</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Username">
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-default login-submit">Submit</button>
-                      </form>
+                    {% include "playgroundapp/user_login.html" %}
                   </ul>
                 </li>
             </ul><!--end login-->
