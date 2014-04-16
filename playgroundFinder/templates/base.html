@@ -7,6 +7,10 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
+        
+    <style>
+
+    </style>
 </head>
 
 <body>
@@ -34,13 +38,7 @@
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu">
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Username">
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-default login-submit">Submit</button>
-                      </form>
+                    {% include "playgroundapp/user_login.html" %}
                   </ul>
                 </li>
             </ul><!--end login-->
@@ -54,6 +52,8 @@
     
     {% block content %}{% endblock %}
     <script>
+        $(document).ready (function(){
+            console.log("doc loaded");
         $(function() {
             $('a[href*=#]:not([href=#])').click(function() {
               if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -89,6 +89,8 @@
         //ACCORDION
         
         //end accordion
+        
+        });
     </script>
 </body>
 </html>
