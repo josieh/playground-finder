@@ -80,6 +80,7 @@ function initialize() {
   var bounds = new google.maps.LatLngBounds();
   
     for(var i=0; i<playgrounds.length;i++){
+
       var codeStr = playgrounds[i].toString();
       var codeStrList = codeStr.split(",");
       var LatDec = parseFloat(codeStrList[0].trim());

@@ -1,34 +1,18 @@
 # Create your views here.
 from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.http import HttpResponseRedirect
-from playgroundApp.models import Playground, Features, SchoolDistrict, Age
+from playgroundApp.models import Playground, Features, SchoolDistrict, Age, TransportationFeatures
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import playgroundSuggest
 from django.core.urlresolvers import reverse
 import json
 
 def Playground_List(request):
-	#playground_list=Playground.object.all()
-	#paginator=Paginator(playground_list, 10)
-	#page=request.GET.get('page')
-
-	#try:
-		#playgrounds=paginator.page(page)
-	#except PageNotAnInteger:
-		#playgrounds=paginator.page(1)
-	#except Emptypage:
-		#playgrounds=paginator.page(paginator.num_pages)
-	#return render (request, 'playgroundApp/playground_list.html' {playgrounds: playgrounds})
+	
 	playgrounds = Playground.objects.all()
 	context = {
 		'playgrounds': playgrounds
 	}
-	#playgrounds = Playground.objects.all()
-	#playgrounds_json = json.dumps(playgrounds)
-	#context2 = {
-		#'playgrounds_json':playgrounds_json
-	#}
-	#return render (request, "home.html", context2)
 	return render (request, "playgroundApp/home.html", context)
 
 
@@ -38,21 +22,17 @@ def userProfile (request):
 #return render (request, 'playgroundApp/user_info.html', {"User": User})
 	
 def userLogin (request):
-	if request.method=='POST':
-		form=login()
+	if request.method=='GET':
+		formLogin=login()
 	else:
-		form=login(request.GET)
-	if form.is_valid():
-		User=User.objects.all().filter(name=form.clean_data['name'])
+		formLogin=login(request.GET)
+	if formLogin.is_valid():
+		User=User.objects.all().filter(name=formLogin.clean_data['name'])
 		return render (request, "playgroundApp/user_profile.html", {'User': User})
-
-	return render (request, "playgroundApp/user_login.html", {'form': form,})
+	return render (request, "playgroundApp/user_login.html", {'form': formLogin,})
 
 def userSignUp(request):
-	return  render (request, "plagyroundApp/userSignup.html")
-
-def home(request):
-        return HttpResponse('HelloWorld')
+	return  render (request, "playgroundApp/userSignup.html")
 
 def playgroundGeoCodes(request):
 	playgrounds = Playground.objects.all()
@@ -77,15 +57,15 @@ def playgroundDetail (request, pk):
 	ages = Age.objects.all()
 	ages = ages.filter(ageID = playground.ageID)
 	ages = ages[0]
-	ageList = []
-	if ages.infant == True:
-		ageList.append("Infants")
-	
+
+	transport = TransportationFeatures.objects.all().filter(playgroundID = playground.playgroundID)[0]
+
 	context = {
 		'playground':playground,
 		'schoolDistrict':schoolDistrict,
 		'features':features,
-		'age':ageList,
+		'age':ages,
+		'transport':transport,
 	}
 	return render (request, "playgroundApp/playground_info.html", context)
 
@@ -93,18 +73,35 @@ def playgroundList(request):
 	return render (request, "playgroundApp/home.html")
 
 def suggestPlayground(request):
-	if request.method == 'GET':
-               form = playgroundSuggest()
+        return render(request, 'playgroundApp/playground_suggest.html')
+
+'''def formSuggest(request):
+        if request.method == 'GET':
+               formSuggestion = playgroundSuggest()
         else:
-               form =playgroundSuggest(request.POST)
+               formSuggestion = playgroundSuggest(request.POST)
                submitdate =datetime.utcnow()
-               if form.is_valid():
-                        playgroundName = form.cleaned_data['playgroundName']
-                        address = form.cleaned_data['address']
-                        description = form.cleaned_data['description']
+               if formSuggestion.is_valid():
+                        playgroundName = formSuggestion.cleaned_data['playgroundName']
+                        address = formSuggestion.cleaned_data['address']
+                        description = formSuggestion.cleaned_data['description']
                         suggest =suggestPlayground.objects.create(name=request.POST['name'], address=request.POST['address'], description=request.POST['description'])
                         return HttpResponseRedirect(reverse('playgroundapp_home'))
-        return render(request, 'playgroundApp/playground_suggest.html', { 'form': form, })
+        return render(request, 'playgroundApp/playground_suggest.html', { 'form': formSuggestion, })'''
+        
+def formSuggest(request):
+        if request.method == 'GET':
+               formSuggestion = playgroundSuggest()
+        else:
+               formSuggestion = playgroundSuggest(request.POST)
+               submitdate =datetime.utcnow()
+               if formSuggestion.is_valid():
+                        playgroundName = formSuggestion.cleaned_data['playgroundName']
+                        address = formSuggestion.cleaned_data['address']
+                        description = formSuggestion.cleaned_data['description']
+                        suggest =suggestPlayground.objects.create(name=request.POST['name'], address=request.POST['address'], description=request.POST['description'])
+                        return HttpResponseRedirect(reverse('playgroundapp_home'))
+        return render(request, 'playgroundApp/playground_suggest.html', { 'formSuggest': formSuggestion, })
 
 def userProfile (request):
 	return render (request, "playgroundApp/user_profile.html")

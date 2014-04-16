@@ -10,7 +10,7 @@
         <h1 class="project-title">Find N' Play</h1>
         <h4>Find, contribute and explore playgrounds in the Durham/Chapel Hill area.</h4>
         <a href="{{ TEMPLATE_DIRS }}/#find"><button type="button" class="btn btn-info main-buttons">Find A Playground</button></a><br>
-        <a href="{{ TEMPLATE_DIRS }}playgroundapp/playground_suggest"><button type="button" class="btn btn-warning main-buttons">Add A Playground</button></a>
+        <a href="{{ TEMPLATE_DIRS }}playgroundapp/add-playground"><button type="button" class="btn btn-warning main-buttons">Add A Playground</button></a>
     </center>
 </div>
 </div><!--end opening text-->
@@ -19,7 +19,7 @@
 <div class="container">
 <a id="find"></a>
 <div class="row">
-<h1>Find a Playground</h1>
+<h2>Find a Playground</h2>
 <div class="col-md-5 left-info">
     <div class="input-group input-search" style="display: table">
       <input type="text" class="form-control" placeholder="search" style="border: 1px solid #000; border-right: none;">
@@ -50,6 +50,7 @@
                     <td>{{playground.street}}</td>
                 </tr>
             {% endfor %}
+
         </tbody>
     </table>
     </div>

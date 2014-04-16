@@ -5,7 +5,7 @@
         "fields": {
                 "ageID": 1,
                 "infant": true,
-                "toddler": true,
+                "toddler": false,
                 "preSchooler": true,
                 "schoolAged": true,
                 "preTeen": true

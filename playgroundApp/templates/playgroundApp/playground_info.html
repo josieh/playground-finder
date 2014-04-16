@@ -13,12 +13,27 @@
     </tr>
     <tr>
         <h6>Suitable for Ages</h6>
-            <p>{{ ages.infant}}, {{ages.toddler}}</p>
+            <span style="display: inline">
+                <p id="infants" style="display: inline">Infants,</p>
+                <p id="toddlers" style="display: inline">Toddlers,</p>
+                <p id="preSchool" style="display: inline">Pre-School Aged</p>
+                <p id="schoolAge" style="display: inline">School Aged,</p>
+                <p id="preTeen" style="display: inline">Pre-Teens</p>
+            </span>
     </tr>
+    
     <tr> <h6>School District</h6> <p>{{ schoolDistrict.districtname }}</p>
     </tr> 
     <tr>
-        <h6>Transportation</h6> <p>{{ playground.transportationFeaturesID }}</p>
+        <h6>Transportation</h6>
+            <ul>
+                <li id="bike">Nearby Bike Path</li>
+                <li id="hike">Hiking Trails</li>
+                <li id="noPark">No Parking</li>
+                <li id="park">On-Site Parking</li>
+                <li id="nearPark">Nearby Parking</li>
+                <li id="bus">{{transport.proximityToBus}} Miles from a Bus Line</li>
+            </ul>
     </tr>
     <tr>
         <h6>Hours</h6> <p>{{ playground.hours }}</p>
@@ -46,4 +61,30 @@
 </div>
 </div>
 </div>
+<script>
+    ageArray = new Array;
+    ageArray = ["{{age.infant}}", "{{age.toddler}}", "{{age.preSchooler}}", "{{age.schoolAged}}", "{{age.preTeen}}"];
+    console.log(ageArray);
+    console.log(ageArray[1]);
+    var test = ageArray[1] == "False"
+    console.log(test);
+    
+    $(function() {
+        if (ageArray[0] == "False"){
+            $("#infants").hide();
+        }
+        if (ageArray[1] == "False"){
+            $("#toddlers").hide();
+        }
+        if (ageArray[2] == "False"){
+            $("#preSchool").hide();
+        }
+        if (ageArray[3] == "False"){
+            $("#schoolAge").hide();
+        }
+        if (ageArray[4] == "False"){
+            $("#preTeen").hide();
+        }
+    })
+</script>
 {% endblock %}

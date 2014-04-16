@@ -15,7 +15,8 @@
             "isGrandma": false,
             "isOther": false,
             "favoritesID": 1,
-            "image": "http://placehold.it/32x32"
+            "image": "http://placehold.it/32x32",
+            "password": meow
         }
     }
 ]

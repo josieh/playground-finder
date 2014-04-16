@@ -1,11 +1,22 @@
-{% extends "base.html" %}
-
 {% block content %}
-<h1>User Review Form</h1>
-<body>
-    <form action='/playgroundapp/new_review.html' method='get'>{% csrf_token %}
-    {{ form.as_p }}
-    <input type='submit' value='Submit' />
-    </form>
-</body>
+
+    {{ form.playgroundName}}
+        <div class="col-sm-10 suggest-form">
+            {{ formSuggest.playgroundName }}
+        </div>
+        <div class="col-sm-10 suggest-form">    
+            {{ formSuggest.address }}
+        </div>
+        <div class="col-sm-10 suggest-form"> 
+            {{ formSuggest.description }}
+        </div>
+        <div>
+            {{ formSuggest.name }}
+        </div>
+        
+        <!--<div class="col-sm-10 suggest-form">
+            <imput type="submit" class="btn btn-default suggest-submit" value="SUBMIT" />
+        </div>-->
+        
+
 {% endblock %}
