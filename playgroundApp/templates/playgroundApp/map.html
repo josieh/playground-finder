@@ -35,6 +35,7 @@
     {% for playground in playgrounds %}
       playground = [];
       playground.push({{playground.latLon}});
+      playground.push("{{playground.name}}");
       playgrounds.push(playground);
     {% endfor %}
   
