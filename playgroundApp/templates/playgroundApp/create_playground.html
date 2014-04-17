@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--"/playgroundapp/testForm/" is the url for the form -->
+<form action="" method="post">{% csrf_token %}
+<!--
+    The below code looks confusing so let me explain. I looked at the the django docs for the different ways to
+    represent a form (.as_ul, .as_table, etc.) and it showed me how to look at what html it will spit out if you
+    use one over the other (https://docs.djangoproject.com/en/dev/ref/forms/api/#outputting-forms-as-html). I went
+    into the python shell (python manage.py shell) and typed the following commands:
+        >>> from playgroundApp.forms import suggestTest
+        >>> f = suggestTest()
+        >>> print f.as_ul()
+    and the below code is what was spit out. I was hoping this would make it easier to style the different fields
+    but I am not sure if it will. The only options for displaying are <ul>, <table>, and <p>. I am not sure what
+    happens if I list every attribute individually, I will test that next
+-->
+
+<!-- The below code can also be written:
+<ul>
+    {{form.as_ul}}
+</ul>
+
+<!-- The below is stable and appears correctly on the form
+<ul>
+    <li>
+        <label for="id_playgroundID">PlaygroundID:</label>
+        <input id="id_playgroundID" name="playgroundID" type="number" />
+    </li>
+    <li>
+        <label for="id_name">Name:</label>
+        <textarea cols="40" id="id_name" name="name" rows="10"></textarea>
+    </li>
+    <li>
+        <label for="id_street">Street:</label>
+        <textarea cols="40" id="id_street" name="street" rows="10"></textarea>
+    </li>
+    <li>
+        <label for="id_zipcode">Zipcode:</label>
+        <input id="id_zipcode" name="zipcode" type="number" />
+    </li>
+    <li>
+        <label for="id_handicap">Handicap:</label>
+        <input id="id_handicap" name="handicap" type="checkbox" />
+    </li>
+    <li>
+        <label for="id_ageID">AgeID:</label>
+        <input id="id_ageID" name="ageID" type="number" />
+    </li>
+    <li>
+        <label for="id_schoolDistrictID">SchoolDistrictID:</label>
+        <input id="id_schoolDistrictID" name="schoolDistrictID" type="number" />
+    </li>
+    <li>
+        <label for="id_hours">Hours:</label>
+        <textarea cols="40" id="id_hours" name="hours" rows="10"></textarea>
+    </li>
+    <li>
+        <label for="id_featuresID">FeaturesID:</label>
+        <input id="id_featuresID" name="featuresID" type="number" />
+    </li>
+    <li>
+        <label for="id_image">Image:</label>
+        <textarea cols="40" id="id_image" name="image" rows="10"></textarea>
+    </li>
+    <li>
+        <label for="id_safetyFeaturesID">SafetyFeaturesID:</label>
+        <input id="id_safetyFeaturesID" name="safetyFeaturesID" type="number" />
+    </li>
+    <li>
+        <label for="id_transportFeaturesID">TransportFeaturesID:</label>
+        <input id="id_transportFeaturesID" name="transportFeaturesID" type="number" />
+    </li>
+    <li>
+        <label for="id_latLon">LatLon:</label>
+        <input id="id_latLon" maxlength="20" name="latLon" type="text" />
+    </li>
+</ul>
+
+<input type="submit" name="submit" value="Add Playground">
+
+-->
+
+<!-- The below code works as well. This is important because it shows we can style all of this shit and
+    still have it correctly enter things into the DB -->
+    
+<ul>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_playgroundID" name="playgroundID" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;"></textarea>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <textarea cols="40" id="id_street" name="street" rows="10" style="border: 1px solid #000;"></textarea>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_handicap" name="handicap" type="checkbox" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_ageID" name="ageID" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_schoolDistrictID" name="schoolDistrictID" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <textarea cols="40" id="id_hours" name="hours" rows="10" style="border: 1px solid #000;"></textarea>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_featuresID" name="featuresID" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <textarea cols="40" id="id_image" name="image" rows="10" style="border: 1px solid #000;"></textarea>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_safetyFeaturesID" name="safetyFeaturesID" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_transportFeaturesID" name="transportFeaturesID" type="number" style="border: 1px solid #000;"/>
+    </div>
+    <div class="col-sm-10 suggest-form">
+        <input id="id_latLon" maxlength="20" name="latLon" type="text" style="border: 1px solid #000;"/>
+    </div>
+</ul>
+
+<input type="submit" name="submit" value="Add Playground">
+</form>
+
+{% endblock %}

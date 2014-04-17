@@ -41,14 +41,14 @@
     <tr>
         <h6>Features</h6
         <ul>
-        <li>Swings: {{ features.swing }}</li>
-        <li>Slides: {{ features.slide }}</li>
-        <li>Monkey Bars: {{ features.monkeyBars }}</li>
-        <li>Sand Boxes: {{ features.sandBox }} </li>
-        <li>Fields: {{ features.field }}</li>
-        <li>Picnic Tables: {{ features.picnicTable }}</li>
-        <li>Bathrooms: {{ features.bathrooms }} </li>
-        <li>Changing Stations: {{ features.changingStation }}</li>
+        <li id="swing">Swings: {{ features.swing }}</li>
+        <li id="slide">Slides: {{ features.slide }}</li>
+        <li id="monkey">Monkey Bars: {{ features.monkeyBars }}</li>
+        <li id="sand">Sand Boxes: {{ features.sandBox }} </li>
+        <li id="field">Fields: {{ features.field }}</li>
+        <li id="picnic">Picnic Tables: {{ features.picnicTable }}</li>
+        <li id="bathroom">Bathrooms: {{ features.bathrooms }} </li>
+        <li id="changing">Changing Stations: {{ features.changingStation }}</li>
         </ul>
     </tr>
     </tbody>
@@ -84,6 +84,62 @@
         }
         if (ageArray[4] == "False"){
             $("#preTeen").hide();
+        }
+    })
+    
+    transportArray = new Array()
+    transportArray = ["{{transport.bikePath}}", "{{transport.hikingTrail}}", "{{transport.adjacentParking}}", "{{transport.nearbyParking}}", "{{transport.noParking}}", "{{transport.proximityToBus}}"];
+    console.log(transportArray);
+    
+    $(function() {
+        if (transportArray[0] == "False"){
+            $("#bike").hide();
+        }
+        if (transportArray[1] == "False"){
+            $("#hike").hide();
+        }
+        if (transportArray[2] == "False"){
+            $("#nearPark").hide();
+        }
+        if (transportArray[3] == "False"){
+            $("#park").hide();
+        }
+        if (transportArray[4] == "False"){
+            $("#noPark").hide();
+        }
+        if (transportArray[5] == 0){
+            $("#bus").hide();
+        }
+    })
+    
+    featureArray = new Array()
+    featureArray = ["{{features.swing}}", "{{features.slide}}", "{{features.monkeyBars}}", "{{features.sandBox}}", "{{features.field}}", "{{features.picnicTable}}", "{{features.bathrooms}}", "{{features.changingStation}}"];
+    console.log(featureArray);
+    
+    $(function() {
+        if (featureArray[0] == 0){
+            $("#swing").hide();
+        }
+        if (transportArray[1] == 0){
+            $("#slide").hide();
+        }
+        if (featureArray[2] == 0){
+            $("#monkey").hide();
+        }
+        if (featureArray[3] == 0){
+            $("#sand").hide();
+        }
+        if (featureArray[4] == 0){
+            $("#field").hide();
+        }
+        if (featureArray[5] == 0){
+            $("#picnic").hide();
+        }
+        if (featureArray[6] == 0){
+            $("#bathroom").hide();
+        }
+        if (featureArray[7] == 0){
+            $("#changing").hide();
         }
     })
 </script>
