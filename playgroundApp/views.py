@@ -3,9 +3,24 @@ from django.shortcuts import render, get_object_or_404, redirect, render_to_resp
 from django.http import HttpResponseRedirect
 from playgroundApp.models import Playground, Features, SchoolDistrict, Age, TransportationFeatures
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from playgroundApp.forms import playgroundSuggest
+from playgroundApp.forms import playgroundSuggest, suggestTest 
 from django.core.urlresolvers import reverse
+from django.core.context_processors import csrf
 import json
+
+def testCreate(request):
+	if request.POST:
+		form = suggestTest(request.POST)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('playgroundapp_home'))
+	else:
+		form = suggestTest()
+	args = {}
+	args.update(csrf(request))
+	
+	args['form'] = form
+	return render_to_response('playgroundapp/create_playground.html', args)
 
 def Playground_List(request):
 	

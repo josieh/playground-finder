@@ -14,4 +14,7 @@ urlpatterns=patterns('',
         #urls for the suggest a playground page
         url(r'^playgroundapp/map$', views.map, name='map'),
         url(r'^playgroundapp/add-playground$', views.formSuggest, name='form_suggest'),
+        
+        #url to test form created by following youTube video
+        url(r'^playgroundapp/testForm', views.testCreate, name='testForm'),
 )
