@@ -5,7 +5,9 @@
 <!--"/playgroundapp/testForm/" is the url for the form -->
 <form action="" method="post">{% csrf_token %}
 <ul>
-    {{form.as_ul}}
+    {{form.name}}
+    {{form.zipcode}}
+    {{form.hours}}
 </ul>
 
 <input type="submit" name="submit" value="Add Playground">
