@@ -1,17 +1,15 @@
 {% block content %}
 
-    {{ form.playgroundName}}
         <div class="col-sm-10 suggest-form">
+            <label>Name</label>
             {{ formSuggest.playgroundName }}
         </div>
         <div class="col-sm-10 suggest-form">    
+            <label>Address</label>
             {{ formSuggest.address }}
         </div>
         <div class="col-sm-10 suggest-form"> 
-            {{ formSuggest.description }}
-        </div>
-        <div>
-            {{ formSuggest.name }}
+            <label>Description</label>{{ formSuggest.description }}
         </div>
         
         <!--<div class="col-sm-10 suggest-form">
