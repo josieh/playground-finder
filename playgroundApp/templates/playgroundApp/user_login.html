@@ -1,8 +1,17 @@
-<form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Username">
+{% block content %}
+
+    {% if form.errors %}
+        <p>Sorry, that is not a valid username or password</p>
+    {% endif %}
+    <!--The one thing I am still having trouble understanding is the action tag
+    in the form. I don't know what that does or what the parameter type is-->
+    <form action="/playgroundapp/auth/" method="post">{% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" value="" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="" id="password">
             
-        <input type="password" class="form-control" placeholder="Password">
-    </div>
-    <button type="submit" class="btn btn-default login-submit">Submit</button>
-</form>
+        <input type="submit" value="Login">
+    </form>
+    
+{% endblock %}

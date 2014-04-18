@@ -6,6 +6,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from playgroundApp.forms import playgroundSuggest, suggestTest 
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
 import json
 
 def testCreate(request):
@@ -30,24 +32,50 @@ def Playground_List(request):
 	}
 	return render (request, "playgroundApp/home.html", context)
 
+def userLogin(request):
+	c = {}
+	c.update(csrf(request))
+	return render_to_response(reverse('userLogin'), c)
 
-def userProfile (request):
-        return (request, "playgroundApp/userProfile.html")
-#User=get_object_or_404 (Playground)
-#return render (request, 'playgroundApp/user_info.html', {"User": User})
+def auth_view(request):
+	username = request.POST.get('username','')
+	password = request.POST.get('password','')
+	user = auth.authenticate(username=username, password=password)
 	
-def userLogin (request):
-	if request.method=='GET':
-		formLogin=login()
+	if user is not None:
+		auth.login(request, user)
+		return HttpResponseRedirect(reverse('userLoggedin'))
 	else:
-		formLogin=login(request.GET)
-	if formLogin.is_valid():
-		User=User.objects.all().filter(name=formLogin.clean_data['name'])
-		return render (request, "playgroundApp/user_profile.html", {'User': User})
-	return render (request, "playgroundApp/user_login.html", {'form': formLogin,})
+		return HttpResponseRedirect(reverse('invalid_login'))
 
+def userLoggedin(request):
+	return render_to_response("playgroundApp/user_loggedin.html",{'full_name':request.user.username})
+
+def invalid_login(request):
+	return render_to_response("playgroundApp/user_invalid.html")
+
+def userLogout(request):
+	auth.logout
+	return render_to_response("playgroundApp/user_logout.html")
 def userSignUp(request):
 	return  render (request, "playgroundApp/userSignup.html")
+
+def register_user(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			#instead of form.save() you can do a number of different things to increase security (like
+			#having an email sent to the user with a link for them to click)
+			form.save()
+			return HttpResponseRedirect('/playgroundapp/register_success')
+	args = {}
+	args.update(csrf(request))
+	args['form'] = UserCreationForm()
+	
+	return render_to_response('playgroundApp/register.html', args)
+
+def register_success(request):
+	return render_to_response('playgroundApp/register_success.html')
 
 def playgroundGeoCodes(request):
 	playgrounds = Playground.objects.all()
