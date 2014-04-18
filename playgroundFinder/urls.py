@@ -12,9 +12,14 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/login/$', 'django_test.views.login'),
-    url(r'^accounts/auth/$', 'django_test.views.auth_view'),
-    url(r'^accounts/logout/$', 'django_test.views.logout'),
-    url(r'^accounts/loggedin/$', 'django_test.views.loggedin'),
-    url(r'^accounts/invalid/$', 'django_test.views.invalid_login'),
+
+    # Uncomment the next line to enable the admin:
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^playgroundapp/login/$', 'playgroundApp.views.userLogin', name="userLogin"),
+    url(r'^playgroundapp/auth/$', 'playgroundApp.views.auth_view', name="authView"),
+    url(r'^playgroundapp/logout/$', 'playgroundApp.views.userLogout', name="userLogout"),
+    url(r'^playgroundapp/loggedin/$', 'playgroundApp.views.userLoggedin', name="userLoggedin"),
+    url(r'^playgroundapp/invalid/$', 'playgroundApp.views.invalid_login', name="invalid_login"),
+    url(r'^playgroundapp/register/$', 'playgroundApp.views.register_user', name="register_user"),
+    url(r'^playgroundapp/register_success/$', 'playgroundApp.views.register_success', name="register_success"),
 )
