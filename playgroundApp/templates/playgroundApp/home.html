@@ -7,6 +7,7 @@
 <div class="opening-text">
 <div class="col-md-6 col-md-offset-3 opening-text" style="min-height: 100%">
     <center>
+        <!--<img src="http://www.katiemarriner.com/static/playground/static/project/public/images/logo.svg" class="hidden-md hidden-lg">-->
         <h1 class="project-title">Find N' Play</h1>
         <h4>Find, contribute and explore playgrounds in the Durham/Chapel Hill area.</h4>
         <a href="{{ TEMPLATE_DIRS }}/#find"><button type="button" class="btn btn-info main-buttons">Find A Playground</button></a><br>
@@ -16,8 +17,8 @@
 </div><!--end opening text-->
 </div><!--end title row-->
 
-<div class="container">
 <a id="find"></a>
+<div class="container">
 <div class="row">
 <h2>Find a Playground</h2>
 <div class="col-md-5 left-info">
@@ -28,15 +29,9 @@
         </span>
     </div><!-- /input-group -->    
     
-    <div class="hidden-md hidden-lg mobile-map">
-    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
-        
-    </iframe>-->
-    </div> <!-- end mobile map-->
+    <div class="table-div park-table-outer">
     
-    <div class="table-div" style="max-height: 250px; overflow-y: scroll; margin: 20px inherit;">
-    
-    <table class="table">
+    <table class="table park-table">
         <thead>
             <tr class="find-header">
                 <th>Name</th>
@@ -154,9 +149,6 @@
     
 </div><!--end list column-->
 <div class="col-md-7 right-map">
-    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
-        
-    </iframe>-->
     <div class="container well" style="width: 100%; height: 500px; border: none; padding: 0; margin: 0;">
     {% include "playgroundApp/map.html" %}
     </div>

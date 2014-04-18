@@ -4,12 +4,12 @@
 <div class="container">
 <h2>{{ playground.name }}</h2>
 <div class=row>
-<div class="col-md-5 left-info">    
+<div class="col-md-5 play-info">    
     <div class="table-div" style="max-height: 440px; overflow-y: scroll; margin: 20px inherit;">
     <table class="table">
     <tbody>
     <tr>
-          <h6>Address</h6> <p>{{ playground.street }} {{ playground.zipcode }}</p>
+        <h6>Address</h6> <p>{{ playground.street }} {{ playground.zipcode }}</p>
     </tr>
     <tr>
         <h6>Suitable for Ages</h6>
@@ -39,17 +39,17 @@
         <h6>Hours</h6> <p>{{ playground.hours }}</p>
     </tr>
     <tr>
-        <h6>Features</h6
-        <ul>
-        <li id="swing">Swings: {{ features.swing }}</li>
-        <li id="slide">Slides: {{ features.slide }}</li>
-        <li id="monkey">Monkey Bars: {{ features.monkeyBars }}</li>
-        <li id="sand">Sand Boxes: {{ features.sandBox }} </li>
-        <li id="field">Fields: {{ features.field }}</li>
-        <li id="picnic">Picnic Tables: {{ features.picnicTable }}</li>
-        <li id="bathroom">Bathrooms: {{ features.bathrooms }} </li>
-        <li id="changing">Changing Stations: {{ features.changingStation }}</li>
-        </ul>
+        <h6>Features</h6>
+            <ul>
+                <li id="swing">Swings: {{ features.swing }}</li>
+                <li id="slide">Slides: {{ features.slide }}</li>
+                <li id="monkey">Monkey Bars: {{ features.monkeyBars }}</li>
+                <li id="sand">Sand Boxes: {{ features.sandBox }} </li>
+                <li id="field">Fields: {{ features.field }}</li>
+                <li id="picnic">Picnic Tables: {{ features.picnicTable }}</li>
+                <li id="bathroom">Bathrooms: {{ features.bathrooms }} </li>
+                <li id="changing">Changing Stations: {{ features.changingStation }}</li>
+            </ul>
     </tr>
     </tbody>
     </table>
