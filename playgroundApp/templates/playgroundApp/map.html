@@ -1,4 +1,4 @@
-
+<head>
     <!--<link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
@@ -36,6 +36,7 @@
       playground = [];
       playground.push({{playground.latLon}});
       playground.push("{{playground.name}}");
+      playground.push({{playground.id}});
       playgrounds.push(playground);
     {% endfor %}
   
@@ -79,9 +80,7 @@ function initialize() {
   var bounds = new google.maps.LatLngBounds();
   
     for(var i=0; i<playgrounds.length;i++){
-      console.log(playgrounds[i]);
-      console.log(playgrounds[i][2]);
-      console.log(playgrounds[i][1]);
+
       var codeStr = playgrounds[i].toString();
       var codeStrList = codeStr.split(",");
       var LatDec = parseFloat(codeStrList[0].trim());
@@ -101,7 +100,7 @@ function initialize() {
             infowindow.open(map, this);
         });
   }
-  
+
   // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -180,3 +179,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
       <input type="button" value="Search" onclick="codeAddress()"  >
     </div>
     <div id="map-canvas"></div>
+  </body>
+

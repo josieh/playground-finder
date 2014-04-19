@@ -93,10 +93,11 @@
           
           
              <select class="form-control signup-form" placeholder="favorite park" style="border: 1px solid #000;">
+                
                 <option value="select">Favorite Playground</option>
-                <option value="CHC">Chapel Hill-Carrboro YMCA</option>
-                <option value="FP2">Fun Playground 2</option>
-                <option value="SM">Slides and More</option>
+                {% for playground in playgrounds %}
+                <option value="{{playground.id}}">{{ playground.name }}</option>
+                {% endfor %}
               </select>
             <input type="text" class="form-control signup-form" placeholder="if other please specify" style="border: 1px solid #000;">
         

@@ -4,12 +4,12 @@
 <div class="container">
 <h2>{{ playground.name }}</h2>
 <div class=row>
-<div class="col-md-5 left-info">    
+<div class="col-md-5 play-info">    
     <div class="table-div" style="max-height: 440px; overflow-y: scroll; margin: 20px inherit;">
     <table class="table">
     <tbody>
     <tr>
-          <h6>Address</h6> <p>{{ playground.street }} {{ playground.zipcode }}</p>
+        <h6>Address</h6> <p>{{ playground.street }} {{ playground.zipcode }}</p>
     </tr>
     <tr>
         <h6>Suitable for Ages</h6>
@@ -36,6 +36,9 @@
             </ul>
     </tr>
     <tr>
+        <h6 id="handicap">Handicap Accessible</h6>
+    </tr>
+    <tr>
         <h6>Hours</h6> <p>{{ playground.hours }}</p>
     </tr>
     <tr>
@@ -56,7 +59,7 @@
 </div>
 </div>
 <div class="col-md-7">
-  <img src= {{ playground.image }}>
+  <img src="{{ STATIC_URL }}{{ playground.image }}" alt="{{playground.name}}" class="img-responsive">
 </div>
 </div>
 </div>
@@ -68,29 +71,29 @@
     console.log(ageArray[1]);
     var test = ageArray[1] == "False"
     console.log(test);
-    
+
     $(function() {
-        if (ageArray[0] == "False"){
-            $("#infants").hide();
+    if (ageArray[0] == "False"){
+        $("#infants").hide();
         }
-        if (ageArray[1] == "False"){
-            $("#toddlers").hide();
+    if (ageArray[1] == "False"){
+        $("#toddlers").hide();
         }
-        if (ageArray[2] == "False"){
-            $("#preSchool").hide();
-        }
-        if (ageArray[3] == "False"){
-            $("#schoolAge").hide();
-        }
-        if (ageArray[4] == "False"){
-            $("#preTeen").hide();
-        }
+    if (ageArray[2] == "False"){
+        $("#preSchool").hide();
+       }
+    if (ageArray[3] == "False"){
+        $("#schoolAge").hide();
+       }
+    if (ageArray[4] == "False"){
+        $("#preTeen").hide();
+    }
     })
     
     transportArray = new Array()
     transportArray = ["{{playground.bikePath}}", "{{playground.hikingTrail}}", "{{playground.adjacentParking}}", "{{playground.nearbyParking}}", "{{playground.noParking}}", "{{playground.proximityToBus}}"];
     console.log(transportArray);
-    
+
     $(function() {
         if (transportArray[0] == "False"){
             $("#bike").hide();
@@ -111,7 +114,7 @@
             $("#bus").hide();
         }
     })
-    
+
     featureArray = new Array()
     featureArray = ["{{playground.swing}}", "{{playground.slide}}", "{{playground.monkeyBars}}", "{{playground.sandBox}}", "{{playground.field}}", "{{playground.picnicTable}}", "{{playground.bathrooms}}", "{{playground.changingStation}}"];
     console.log(featureArray);
@@ -142,5 +145,14 @@
             $("#changing").hide();
         }
     })
+    
+    playgroundArray = new Array()
+    playgroundArray = ["{{playground.handicap}}"]
+    $(function(){
+        if (playgroundArray[0] == "False"){
+            $("#handicap").hide();
+        }
+    })
+
 </script>
 {% endblock %}

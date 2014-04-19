@@ -1,17 +1,24 @@
-{% block content %}
+<!--Will not extend base.html says "maximum recurssion depth exceeded-->
 
+{% block content %}
     {% if form.errors %}
         <p>Sorry, that is not a valid username or password</p>
     {% endif %}
+    
     <!--The one thing I am still having trouble understanding is the action tag
     in the form. I don't know what that does or what the parameter type is-->
-    <form action="/playgroundapp/auth/" method="post">{% csrf_token %}
-        <label for="username">Username:</label>
-        <input type="text" name="username" value="" id="username">
-        <label for="password">Password:</label>
-        <input type="password" name="password" value="" id="password">
-            
-        <input type="submit" value="Login">
+    <form action="/playgroundapp/auth/" method="post">
+        
+        {% csrf_token %}
+        <div class="login-form">
+            <input type="text" name="username" value="" id="username" placeholder="username">
+        </div>
+        <div class="login-form">
+            <input type="password" name="password" value="" id="password" placeholder="password">
+        </div>
+        <div class="login-form">
+            <input type="submit" class="btn btn-default suggest-submit" value="Login">
+        </div>    
     </form>
     
 {% endblock %}
