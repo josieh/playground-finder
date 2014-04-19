@@ -13,6 +13,7 @@ import json
 def testCreate(request):
 	if request.POST:
 		form = suggestTest(request.POST)
+		#I think this is where we would set the field for latLon
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(reverse('playgroundapp_home'))
@@ -87,28 +88,28 @@ def playgroundGeoCodes(request):
 
 def playgroundDetail (request, pk):
 	playground = get_object_or_404(Playground, id=pk)
-	
+	'''
 	features = Features.objects.all()
 	features = features.filter(playgroundID=pk)
 	features = features[0]
-	
+	'''
 	
 	schoolDistrict = SchoolDistrict.objects.all()
 	schoolDistrict = schoolDistrict.filter(schoolDistrictID = playground.schoolDistrictID)
 	schoolDistrict = schoolDistrict[0]
-	
+	'''
 	ages = Age.objects.all()
 	ages = ages.filter(ageID = playground.ageID)
 	ages = ages[0]
 
 	transport = TransportationFeatures.objects.all().filter(playgroundID = playground.playgroundID)[0]
-
+	'''
 	context = {
 		'playground':playground,
 		'schoolDistrict':schoolDistrict,
-		'features':features,
-		'age':ages,
-		'transport':transport,
+		#'features':features,
+		#'age':ages,
+		#'transport':transport,
 	}
 	return render (request, "playgroundApp/playground_info.html", context)
 
