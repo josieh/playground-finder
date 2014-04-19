@@ -4,20 +4,28 @@
     <div class="container">
         <h2 class="loggedIn">Hi {{full_name}}, You Are Now Logged In!</h2>
         <p>Click <a href="/playgroundapp/logout/">Here</a> To Log Out</p>
-        <p>Click <a href="/playgroundapp/logout/">Here</a> if you're not redirected.</p>
+        <p>Click <a href="/">Here</a> if you are not redirected.</p>
+    
+    <div class="full_name hide">
+        {{full_name}}
     </div>
+    </div>
+    
+    
     
     <script>
     //window.setTimeout(function() {
-      //  window.location.href = '/';
+    //  window.location.href = '/';
     //}, 3000);
     
-    if($(".loggedIn").text().length > 28) {
+    if($(".full_name").text().length > 1) {
         $('.signUp').hide();
         $('.userLogin').hide();
         $('.helloUser').removeClass("hide")
+        $(".append").append(".full_name")
     }  else {
         console.log("did not work");
     }
+
     </script>
 {% endblock %}

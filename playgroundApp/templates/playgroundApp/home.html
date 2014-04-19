@@ -20,7 +20,7 @@
 <a id="find"></a>
 <div class="container">
 <div class="row">
-<h2>Find a Playground</h2>
+<h2>Find A Playground</h2>
 <div class="col-md-5 left-info">
     <div class="input-group input-search" style="display: table">
       <input type="text" class="form-control" placeholder="search" style="border: 1px solid #000; border-right: none;">
@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for playground in playgrounds%}
+            {% for playground in playgrounds %}
                 <tr>
                     <td><a href="{{ TEMPLATE_DIRS }}playgroundapp/playground_info/{{playground.id}}">{{playground.name}}</a></td>
                     <td>{{playground.street}}</td>
@@ -154,8 +154,6 @@
     </div>
 </div>
 </div><!--end list detail and map row-->
-
-
 {% endblock %}
 
 </div><!--end div container-->
