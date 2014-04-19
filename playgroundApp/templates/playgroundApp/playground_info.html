@@ -36,27 +36,30 @@
             </ul>
     </tr>
     <tr>
+        <h6 id="handicap">Handicap Accessible</h6>
+    </tr>
+    <tr>
         <h6>Hours</h6> <p>{{ playground.hours }}</p>
     </tr>
     <tr>
-        <h6>Features</h6>
-            <ul>
-                <li id="swing">Swings: {{ features.swing }}</li>
-                <li id="slide">Slides: {{ features.slide }}</li>
-                <li id="monkey">Monkey Bars: {{ features.monkeyBars }}</li>
-                <li id="sand">Sand Boxes: {{ features.sandBox }} </li>
-                <li id="field">Fields: {{ features.field }}</li>
-                <li id="picnic">Picnic Tables: {{ features.picnicTable }}</li>
-                <li id="bathroom">Bathrooms: {{ features.bathrooms }} </li>
-                <li id="changing">Changing Stations: {{ features.changingStation }}</li>
-            </ul>
+        <h6>Features</h6
+        <ul>
+        <li id="swing">Swings: {{ features.swing }}</li>
+        <li id="slide">Slides: {{ features.slide }}</li>
+        <li id="monkey">Monkey Bars: {{ features.monkeyBars }}</li>
+        <li id="sand">Sand Boxes: {{ features.sandBox }} </li>
+        <li id="field">Fields: {{ features.field }}</li>
+        <li id="picnic">Picnic Tables: {{ features.picnicTable }}</li>
+        <li id="bathroom">Bathrooms: {{ features.bathrooms }} </li>
+        <li id="changing">Changing Stations: {{ features.changingStation }}</li>
+        </ul>
     </tr>
     </tbody>
     </table>
 </div>
 </div>
 <div class="col-md-7">
-  <img src= {{ playground.image }}>
+  <img src="{{ STATIC_URL }}{{ playground.image }}" alt="{{playground.name}}" class="img-responsive">
 </div>
 </div>
 </div>
@@ -68,29 +71,29 @@
     console.log(ageArray[1]);
     var test = ageArray[1] == "False"
     console.log(test);
-    
+
     $(function() {
-        if (ageArray[0] == "False"){
-            $("#infants").hide();
+    if (ageArray[0] == "False"){
+        $("#infants").hide();
         }
-        if (ageArray[1] == "False"){
-            $("#toddlers").hide();
+    if (ageArray[1] == "False"){
+        $("#toddlers").hide();
         }
-        if (ageArray[2] == "False"){
-            $("#preSchool").hide();
-        }
-        if (ageArray[3] == "False"){
-            $("#schoolAge").hide();
-        }
-        if (ageArray[4] == "False"){
-            $("#preTeen").hide();
-        }
+    if (ageArray[2] == "False"){
+        $("#preSchool").hide();
+       }
+    if (ageArray[3] == "False"){
+        $("#schoolAge").hide();
+       }
+    if (ageArray[4] == "False"){
+        $("#preTeen").hide();
+    }
     })
     
     transportArray = new Array()
     transportArray = ["{{transport.bikePath}}", "{{transport.hikingTrail}}", "{{transport.adjacentParking}}", "{{transport.nearbyParking}}", "{{transport.noParking}}", "{{transport.proximityToBus}}"];
     console.log(transportArray);
-    
+
     $(function() {
         if (transportArray[0] == "False"){
             $("#bike").hide();
@@ -111,7 +114,7 @@
             $("#bus").hide();
         }
     })
-    
+
     featureArray = new Array()
     featureArray = ["{{features.swing}}", "{{features.slide}}", "{{features.monkeyBars}}", "{{features.sandBox}}", "{{features.field}}", "{{features.picnicTable}}", "{{features.bathrooms}}", "{{features.changingStation}}"];
     console.log(featureArray);
@@ -142,5 +145,14 @@
             $("#changing").hide();
         }
     })
+    
+    playgroundArray = new Array()
+    playgroundArray = ["{{playground.handicap}}"]
+    $(function(){
+        if (playgroundArray[0] == "False"){
+            $("#handicap").hide();
+        }
+    })
+
 </script>
 {% endblock %}
