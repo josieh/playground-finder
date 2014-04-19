@@ -4,6 +4,7 @@ from playgroundApp import views
 
 urlpatterns=patterns('',
 	url(r'^$', views.Playground_List, name='playgroundapp_home'),
+        url(r'^list$', views.testFilter),
 	url(r'^playgroundapp/playground_info/(?P<pk>\d+)$', views.playgroundDetail, name='playground_info'),
         url(r'^playgroundapp/playground_suggest$', views.suggestPlayground, name='userSuggest'),
 	url(r'^playgroundapp/user_profile$', views.userProfile, name='userProfile'),

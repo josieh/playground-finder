@@ -3,13 +3,17 @@ from django.shortcuts import render, get_object_or_404, redirect, render_to_resp
 from django.http import HttpResponseRedirect
 from playgroundApp.models import Playground, Features, SchoolDistrict, Age, TransportationFeatures
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from playgroundApp.forms import playgroundSuggest, suggestTest 
+from playgroundApp.forms import playgroundSuggest, suggestTest, playgroundFilter
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
 import json
+
+def testFilter(request):
+	f = playgroundFilter(request.GET, queryset=Playground.objects.all())
+	return render_to_response('playgroundApp/filterTest.html',{'filter': f})
 
 def testCreate(request):
 	if request.POST:
@@ -30,8 +34,10 @@ def testCreate(request):
 def Playground_List(request):
 	
 	playgrounds = Playground.objects.all()
+	f = playgroundFilter(request.GET, queryset=Playground.objects.all())
 	context = {
-		'playgrounds': playgrounds
+		'filter': f,
+		'playgrounds': playgrounds,
 	}
 	return render (request, "playgroundApp/home.html", context)
 
