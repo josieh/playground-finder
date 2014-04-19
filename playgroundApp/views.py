@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime
 import json
 
 def testCreate(request):

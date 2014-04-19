@@ -28,13 +28,14 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="..{{ TEMPLATE_DIRS }}#find">Find</a></li>
-              <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/add-playground">Add</a></li>
+              <li><a href="/{{ TEMPLATE_DIRS }}#find">Find</a></li>
+              <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/add-playground">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="../{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
+                <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
+                <li class="helloUser hide">Hello, {{ full_name }}</li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle userLogin" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu login-dropdown">
                     {% include "playgroundapp/user_login.html" %}
                   </ul>
@@ -73,7 +74,7 @@
             $( "#datepicker" ).datepicker();
         }); //end datepicker
         
-        //DROPDOWN
+        //DROPDOWN CITY
         $(function() {
             var availableTags = [
               "Chapel Hill",
@@ -85,11 +86,18 @@
             });
           }); //end dropdown
         
-        //ACCORDION
-        
-        //end accordion
+        //DROPDOWN LOGIN
+            $('.dropdown-toggle').dropdown();
         
         });
+        
+        if($(".loggedIn").text().length > 28) {
+            $('.signUp').hide();
+            $('.userLogin').hide();
+            $('.helloUser').removeClass("hide")
+        }  else {
+            console.log("did not work");
+        }
     </script>
 </body>
 </html>
