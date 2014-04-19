@@ -23,6 +23,7 @@ def testCreate(request):
 	args.update(csrf(request))
 	
 	args['form'] = form
+	args['dropdown'] = SchoolDistrict.objects.values('districtname').distinct()
 	return render_to_response('playgroundapp/create_playground.html', args)
 
 def Playground_List(request):
