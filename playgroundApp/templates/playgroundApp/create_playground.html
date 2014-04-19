@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 <!--"/playgroundapp/testForm/" is the url for the form -->
+<br>
+<br>
+<div class="col-md-6">
 <form action="" method="post">{% csrf_token %}
 <!--
     The below code looks confusing so let me explain. I looked at the the django docs for the different ways to
@@ -21,74 +23,12 @@
 <ul>
     {{form.as_ul}}
 </ul>
-
-<!-- The below is stable and appears correctly on the form
-<ul>
-    <li>
-        <label for="id_playgroundID">PlaygroundID:</label>
-        <input id="id_playgroundID" name="playgroundID" type="number" />
-    </li>
-    <li>
-        <label for="id_name">Name:</label>
-        <textarea cols="40" id="id_name" name="name" rows="10"></textarea>
-    </li>
-    <li>
-        <label for="id_street">Street:</label>
-        <textarea cols="40" id="id_street" name="street" rows="10"></textarea>
-    </li>
-    <li>
-        <label for="id_zipcode">Zipcode:</label>
-        <input id="id_zipcode" name="zipcode" type="number" />
-    </li>
-    <li>
-        <label for="id_handicap">Handicap:</label>
-        <input id="id_handicap" name="handicap" type="checkbox" />
-    </li>
-    <li>
-        <label for="id_ageID">AgeID:</label>
-        <input id="id_ageID" name="ageID" type="number" />
-    </li>
-    <li>
-        <label for="id_schoolDistrictID">SchoolDistrictID:</label>
-        <input id="id_schoolDistrictID" name="schoolDistrictID" type="number" />
-    </li>
-    <li>
-        <label for="id_hours">Hours:</label>
-        <textarea cols="40" id="id_hours" name="hours" rows="10"></textarea>
-    </li>
-    <li>
-        <label for="id_featuresID">FeaturesID:</label>
-        <input id="id_featuresID" name="featuresID" type="number" />
-    </li>
-    <li>
-        <label for="id_image">Image:</label>
-        <textarea cols="40" id="id_image" name="image" rows="10"></textarea>
-    </li>
-    <li>
-        <label for="id_safetyFeaturesID">SafetyFeaturesID:</label>
-        <input id="id_safetyFeaturesID" name="safetyFeaturesID" type="number" />
-    </li>
-    <li>
-        <label for="id_transportFeaturesID">TransportFeaturesID:</label>
-        <input id="id_transportFeaturesID" name="transportFeaturesID" type="number" />
-    </li>
-    <li>
-        <label for="id_latLon">LatLon:</label>
-        <input id="id_latLon" maxlength="20" name="latLon" type="text" />
-    </li>
-</ul>
-
-<input type="submit" name="submit" value="Add Playground">
-
 -->
-
-<!-- The below code works as well. This is important because it shows we can style all of this shit and
-    still have it correctly enter things into the DB -->
     
-<ul>
+    <!--
     <div class="col-sm-10 suggest-form">
         <input id="id_playgroundID" name="playgroundID" type="number" style="border: 1px solid #000;"/>
-    </div>
+    </div> -->
     <div class="col-sm-10 suggest-form">
         <textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;"></textarea>
     </div>
@@ -98,6 +38,7 @@
     <div class="col-sm-10 suggest-form">
         <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;"/>
     </div>
+    <!--
     <div class="col-sm-10 suggest-form">
         <input id="id_handicap" name="handicap" type="checkbox" style="border: 1px solid #000;"/>
     </div>
@@ -125,9 +66,12 @@
     <div class="col-sm-10 suggest-form">
         <input id="id_latLon" maxlength="20" name="latLon" type="text" style="border: 1px solid #000;"/>
     </div>
-</ul>
+    -->
 
-<input type="submit" name="submit" value="Add Playground">
+<div class="col-sm-10 suggest-form">
+<input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
+</div>
 </form>
+</div>
 
 {% endblock %}
