@@ -9,6 +9,7 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
         
     <meta name="viewport" content="width=device-width">
+        
 </head>
 
 <body>
@@ -52,9 +53,9 @@
     <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     
-    <!--DATA TABLE JS-->
-    <script src="http://josiehollingsworth.com/static/static_media/js/DataTables-1.9.4/media/js/jquery.dataTables.js"></script>
-    <script src="http://josiehollingsworth.com/static/static_media/js/DataTables-1.9.4/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    
+    
     
     {% block content %}
     {% endblock %}
@@ -82,7 +83,8 @@
             $( "#datepicker" ).datepicker();
         }); //end datepicker
         
-        //DROPDOWN CITY
+        //DROPDOWN DISTRICT
+        
         //end dropdown
         
         //DROPDOWN LOGIN
@@ -102,17 +104,19 @@
         
         $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
                 
-         //this is the datatables function    
-         $('#player_list').dataTable( {
-            
+         
+                    
+        }); //end doc ready
+        
+        //this is the datatables function    
+        $('#table_id').dataTable ({
             "bPaginate": false,
             "bAutoWidth": false,
             "bInfo": false,
             "aaSorting": [[ 30, "desc" ]]
-            
         } ); //end datatables function
-                    
-        }); //end doc ready
+        
+         
     </script>
 </body>
 </html>
