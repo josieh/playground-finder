@@ -15,7 +15,6 @@
     {% csrf_token %}
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container" style="margin-top: 0;">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
               <span class="sr-only">Toggle navigation</span>
@@ -26,7 +25,6 @@
             <a class="navbar-brand" href="/{{ TEMPLATE_DIRS }}">Find N' Play</a>
         </div>
       
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li><a href="/{{ TEMPLATE_DIRS }}#find">Find</a></li>
@@ -34,20 +32,19 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
-                <li class="helloUser hide">Hello, {{ full_name }}</li>
+                <li class="helloUser full_name hide">Hello, {{ full_name }}</li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle userLogin" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu login-dropdown">
                     {% include "playgroundapp/user_login.html" %}
-                    <div class="full_name">{{ full_name }}</div>
                     <div class="append"></div>
                   </ul>
                 </li>
+                <li class="loggedIn"></li>
             </ul><!--end login-->
         </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
     </nav>
-    <div class="hide append">{{ full_name }}</div>
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.js"></script>
@@ -83,16 +80,22 @@
         //end dropdown
         
         //DROPDOWN LOGIN
-            $('.dropdown-toggle').dropdown();
-        
-        
-        if($(".full_name").text().length > 1) {
+         $('.dropdown-toggle').dropdown();
+         
+        /*
+        if ($(".full_name_check").text().length > 1) {
+            console.log("logged in")
             $('.signUp').hide();
             $('.userLogin').hide();
-            $('.helloUser').removeClass("hide")
+            $('.helloUser').removeClass("hide");
+            $('.full_name_check').removeClass("hide");
         }  else {
             console.log("did not work");
         }
+        */
+        
+        $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
+                
         
         
         }); //end doc ready
