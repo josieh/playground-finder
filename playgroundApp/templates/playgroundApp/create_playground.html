@@ -4,89 +4,63 @@
 <!--"/playgroundapp/testForm/" is the url for the form -->
 <div class="col-md-6">
     
-<form action="" method="post">
-    {% csrf_token %}
-<!--
-    The below code looks confusing so let me explain. I looked at the the django docs for the different ways to
-    represent a form (.as_ul, .as_table, etc.) and it showed me how to look at what html it will spit out if you
-    use one over the other (https://docs.djangoproject.com/en/dev/ref/forms/api/#outputting-forms-as-html). I went
-    into the python shell (python manage.py shell) and typed the following commands:
-        >>> from playgroundApp.forms import suggestTest
-        >>> f = suggestTest()
-        >>> print f.as_ul()
-    and the below code is what was spit out. I was hoping this would make it easier to style the different fields
-    but I am not sure if it will. The only options for displaying are <ul>, <table>, and <p class="checkbox">. I am not sure what
-    happens if I list every attribute individually, I will test that next
--->
-
-<!-- The below code can also be written:
-<ul>
-    {{form.as_ul}}
-</ul>
--->
+<form action="" method="post">{% csrf_token %}
     
     <div class="col-sm-10 suggest-form">
-        <textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;" placeholder="name"></textarea>
+        <textarea cols="40" id="id_name" name="name" rows="1" style="border: 1px solid #000;" placeholder="name"></textarea>
     </div>
     <div class="col-sm-10 suggest-form">
-        <textarea cols="40" id="id_street" name="street" rows="10" style="border: 1px solid #000;" placeholder="street"></textarea>
+        <textarea cols="40" id="id_street" name="street" style="border: 1px solid #000;" placeholder="street"></textarea>
     </div>
     <div class="col-sm-10 suggest-form">
         <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;" placeholder="zip">
     </div>
 
-    <div class="col-sm-10 suggest-form ui-widget">
-        <select id="combobox">
+    <div class="col-sm-10 suggest-form">
+        <select id="id_districtname">
             <option value="">School District</option>
             {% for district in dropdown %}
-                <option value="{{district.id}}" name="{{district.districtname}}">{{district.districtname}}</option>
+                <option value="{{ district.id }}" name="{{ district.districtname }}">{{ district.districtname }}</option>
             {% endfor %}
         </select>
     </div>
-        <div class="col-sm-10 suggest-form">
-        <input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
+
+    <div>
+        <p class="checkbox" style="padding-left: 0;"><label for="id_proximityToBus">Proximity to bus</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0" /></p>
+        <p class="checkbox" style="padding-left: 0;"><label for="id_proximityToHighway">Proximity to highway</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0" /></p>
     </div>
+
 </div><!--end left col-->
+
 <div class="col-md-6">   
     <span class="filter-options">
         <p class="checkbox"><label for="id_swing">Swing</label> <input id="id_swing" name="swing" type="checkbox" /></p>
         <p class="checkbox"><label for="id_slide">Slide</label> <input id="id_slide" name="slide" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_monkeyBars">MonkeyBars</label> <input id="id_monkeyBars" name="monkeyBars" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_sandBox">SandBox</label> <input id="id_sandBox" name="sandBox" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_monkeyBars">Monkey bars</label> <input id="id_monkeyBars" name="monkeyBars" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_sandBox">Sandbox</label> <input id="id_sandBox" name="sandBox" type="checkbox" /></p>
         <p class="checkbox"><label for="id_field">Field</label> <input id="id_field" name="field" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_picnicTable">PicnicTable</label> <input id="id_picnicTable" name="picnicTable" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_picnicTable">Picnic table</label> <input id="id_picnicTable" name="picnicTable" type="checkbox" /></p>
         <p class="checkbox"><label for="id_bathrooms">Bathrooms</label> <input id="id_bathrooms" name="bathrooms" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_changingStation">ChangingStation</label> <input id="id_changingStation" name="changingStation" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_changingStation">Changing station</label> <input id="id_changingStation" name="changingStation" type="checkbox" /></p>
         <p class="checkbox"><label for="id_shade">Shade</label> <input id="id_shade" name="shade" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_basketballCourt">BasketballCourt</label> <input id="id_basketballCourt" name="basketballCourt" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_basketballCourt">Basketball court</label> <input id="id_basketballCourt" name="basketballCourt" type="checkbox" /></p>
         <p class="checkbox"><label for="id_baseball">Baseball</label> <input id="id_baseball" name="baseball" type="checkbox" /></p>
         <p class="checkbox"><label for="id_fenced">Fenced</label> <input id="id_fenced" name="fenced" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_bikePath">BikePath</label> <input id="id_bikePath" name="bikePath" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_hikingTrail">HikingTrail</label> <input id="id_hikingTrail" name="hikingTrail" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_adjacentParking">AdjacentParking</label> <input id="id_adjacentParking" name="adjacentParking" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_nearbyParking">NearbyParking</label> <input id="id_nearbyParking" name="nearbyParking" type="checkbox" /></p>
-        <p class="checkbox"><label for="id_noParking">NoParking</label> <input id="id_noParking" name="noParking" type="checkbox" /></p>
-        
-        <div>
-            <p class="checkbox"><label for="id_proximityToBus">ProximityToBus</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0" /></p>
-            <p class="checkbox"><label for="id_proximityToHighway">ProximityToHighway</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0" /></p>
-        </div>
-    </span>
-</div> 
+        <p class="checkbox"><label for="id_bikePath">Bike path</label> <input id="id_bikePath" name="bikePath" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_hikingTrail">Hiking trail</label> <input id="id_hikingTrail" name="hikingTrail" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_adjacentParking">Adjacent parking</label> <input id="id_adjacentParking" name="adjacentParking" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_nearbyParking">Nearby parking</label> <input id="id_nearbyParking" name="nearbyParking" type="checkbox" /></p>
+        <p class="checkbox"><label for="id_noParking">No parking</label> <input id="id_noParking" name="noParking" type="checkbox" /></p>
+    </span>    
+
+<div class="col-sm-10 suggest-form">
+    <input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
+</div>
+
+</div> <!--end right col-->
 
 </form>
-</div><!--end right-col-->
 
-<script>
-    $(function() {
-        console.log([{{ form.dropdown }}]);
-        var availableTags = [
-            "{{ dropdown }}"
-        ];
-        $( "#tags" ).autocomplete({
-              source: availableTags
-        });
-    }); 
-</script>
+</div><!--end container-->
 
 {% endblock %}
