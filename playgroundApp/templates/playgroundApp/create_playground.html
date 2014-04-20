@@ -6,7 +6,9 @@
 <br>
 <br>
 <div class="col-md-6">
-<form action="" method="post">{% csrf_token %}
+    
+<form action="" method="post">
+    {% csrf_token %}
 <!--
     The below code looks confusing so let me explain. I looked at the the django docs for the different ways to
     represent a form (.as_ul, .as_table, etc.) and it showed me how to look at what html it will spit out if you
@@ -26,8 +28,10 @@
 </ul>
 -->
 
+    
+    
     <div class="col-sm-10 suggest-form">
-        <textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;"></textarea>
+        <textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;" placeholder="name"></textarea>
     </div>
     <div class="col-sm-10 suggest-form">
         <textarea cols="40" id="id_street" name="street" rows="10" style="border: 1px solid #000;"></textarea>
@@ -47,9 +51,6 @@
         </select>
     </div>
     -->
-    <div class="col-sm-10 suggest-form">
-        <input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
-    </div>
     <p><label for="id_swing">Swing:</label> <input id="id_swing" name="swing" type="checkbox" /></p>
     <p><label for="id_slide">Slide:</label> <input id="id_slide" name="slide" type="checkbox" /></p>
     <p><label for="id_monkeyBars">MonkeyBars:</label> <input id="id_monkeyBars" name="monkeyBars" type="checkbox" /></p>
@@ -69,7 +70,25 @@
     <p><label for="id_nearbyParking">NearbyParking:</label> <input id="id_nearbyParking" name="nearbyParking" type="checkbox" /></p>
     <p><label for="id_noParking">NoParking:</label> <input id="id_noParking" name="noParking" type="checkbox" /></p>
     <p><label for="id_proximityToBus">ProximityToBus:</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0" /></p>
+        <input id="tags" name="districtname" type="text" style="border: 1px solid #000;"/>
+    </div>
+
+    <div class="col-sm-10 suggest-form">
+        <input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
+    </div>
 </form>
 </div>
+
+<script>
+    $(function() {
+        console.log([{{ form.dropdown }}]);
+        var availableTags = [
+            "{{ dropdown }}"
+        ];
+        $( "#tags" ).autocomplete({
+              source: availableTags
+        });
+    }); 
+</script>
 
 {% endblock %}

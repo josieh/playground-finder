@@ -26,13 +26,13 @@ def testCreate(request):
 		form = suggestTest()
 	args = {}
 	args.update(csrf(request))
-	
+
 	args['form'] = form
 	args['dropdown'] = SchoolDistrict.objects.all()
 	return render_to_response('playgroundapp/create_playground.html', args)
 
 def Playground_List(request):
-	
+
 	playgrounds = Playground.objects.all()
 	f = playgroundFilter(request.GET, queryset=Playground.objects.all())
 	context = {
@@ -50,7 +50,7 @@ def auth_view(request):
 	username = request.POST.get('username','')
 	password = request.POST.get('password','')
 	user = auth.authenticate(username=username, password=password)
-	
+
 	if user is not None:
 		auth.login(request, user)
 		return HttpResponseRedirect(reverse('userLoggedin'))
@@ -80,7 +80,7 @@ def register_user(request):
 	args = {}
 	args.update(csrf(request))
 	args['form'] = UserCreationForm()
-	
+
 	return render_to_response('playgroundApp/register.html', args)
 
 def register_success(request):
@@ -101,7 +101,7 @@ def playgroundDetail (request, pk):
 	features = features.filter(playgroundID=pk)
 	features = features[0]
 	'''
-	
+
 	schoolDistrict = SchoolDistrict.objects.all()
 	schoolDistrict = schoolDistrict.filter(schoolDistrictID = playground.schoolDistrictID)
 	schoolDistrict = schoolDistrict[0]
@@ -190,4 +190,3 @@ def userSuggest(request):
 
 def map(request):
         return render (request, "playgroundApp/map.html")
-        
