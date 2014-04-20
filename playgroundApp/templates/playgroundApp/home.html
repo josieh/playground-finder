@@ -39,7 +39,8 @@
             </tr>
         </thead>
         <tbody>
-            {% for playground in playgrounds %}
+
+            {% for playground in filter%}
                 <tr>
                     <td><a href="{{ TEMPLATE_DIRS }}playgroundapp/playground_info/{{playground.id}}">{{playground.name}}</a></td>
                     <td>{{playground.street}}</td>
@@ -61,85 +62,111 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
+                <form action="" method="get">
+                    <!--
+                    <input type="hidden" id="id_infant" name="infant"  value="1"> infant
+                    <input type="checkbox" id="id_infant" name="infant" value="2" />
+                    
+                    <input type="hidden" id="id_toddler" name="toddler" value="1"> toddler
+                    <input type="checkbox" id="id_toddler" name="toddler" value="2" />
+                    
+                    <input type="hidden" id="id_preSchooler" name="preSchooler" value="1"> preSchooler
+                    <input type="checkbox" id="id_preSchooler" name="preSchooler" value="2" />
+                    
+                    <input type="hidden" id="id_schoolAged" name="schoolAged" value="1">schoolAged
+                    <input type="checkbox" id="id_schoolAged" name="schoolAged" value="2" />
+                    
+                    <input type="hidden" id="id_preTeen" name="preTeen" value="1">preTeen
+                    <input type="checkbox" id="id_preTeen" name="preTeen" value="2" />
+                    
+                    <input type="hidden" id="id_swing" name="swing" value="1">swing
+                    <input type="checkbox" id="id_swing" name="swing" value="2" />
+                    
+                    <input type="hidden" id="id_slide" name="swing" value="1">slide
+                    <input type="checkbox" id="id_slide" name="swing" value="2" />
+                    
+                    <input type="submit" />
+                </form>
                 <form action="">
+                -->
                     <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_swing" name="swing" value="1">
+                      <input type="checkbox" id="id_swing" name="swing" value="2" />
                       Swings
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_slide" name="swing" value="1">
+                      <input type="checkbox" id="id_slide" name="swing" value="2" />
                       Slides
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_monkeyBars" name="monkeyBars" value="1">
+                      <input type="checkbox" id="id_monkeyBars" name="monkeyBars" value="2" />
                       Monkey Bars
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_sandBox" name="sandBox" value="1">
+                      <input type="checkbox" id="id_sandBox" name="sandBox" value="2" />
                       Sandbox
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
-                      Fence
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_field" name="field" value="1">
+                      <input type="checkbox" id="id_field" name="field" value="2" />
                       Field
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_picnicTable" name="picnicTable" value="1">
+                      <input type="checkbox" id="id_picnicTable" name="picnicTable" value="2" />
                       Picnic Tables
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
-                    Hiking Trails
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_bathrooms" name="bathrooms" value="1">
+                      <input type="checkbox" id="id_bathrooms" name="bathrooms" value="2" />
                     Bathrooms
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_changingStation" name="changingStation" value="1">
+                      <input type="checkbox" id="id_changingStation" name="changingStation" value="2" />
                     Changing station
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_shade" name="shade" value="1">
+                      <input type="checkbox" id="id_shade" name="shade" value="2" />
                     Shade
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_basketballCourt" name="basketballCourt" value="1">
+                      <input type="checkbox" id="id_basketballCourt" name="basketballCourt" value="2" />
                     Basketball court
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_baseball" name="baseball" value="1">
+                      <input type="checkbox" id="id_baseball" name="baseball" value="2" />
                     Baseball Field
                     </label>
-                </div> 
+                </div>
+                <input type="submit" />
                 </form>
             </div>
           </div>

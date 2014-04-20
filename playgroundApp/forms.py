@@ -1,6 +1,7 @@
 from django import forms
 from playgroundApp import models
 from models import Playground
+import django_filters
 
 class login (forms.ModelForm):
 	class Meta:
@@ -21,3 +22,8 @@ class playgroundSuggest (forms.ModelForm):
 class suggestTest (forms.ModelForm):
        class Meta:
               model = Playground
+
+class playgroundFilter(django_filters.FilterSet):
+       class Meta:
+              model = Playground
+              fields = ['swing', 'slide', 'monkeyBars', 'sandBox', 'field', 'picnicTable', 'bathrooms', 'changingStation', 'shade','basketballCourt', 'baseball']
