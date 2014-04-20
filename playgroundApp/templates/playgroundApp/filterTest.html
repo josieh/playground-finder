@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+    {% for obj in filter %}
+        {{ obj.name }}<br />
+    {% endfor %}
+    <form action="" method="get">
+        <!--
+        {{ filter.form.swing }}
+        <input type="hidden" id="id_swing" name="swing" value="1">swing
+        <input type="checkbox" id="id_swing" name="swing" value="2" />
+        {{ filter.form.slide }}
+        <input type="hidden" id="id_slide" name="swing" value="1">slide
+        <input type="checkbox" id="id_slide" name="swing" value="2" />
+        -->
+        {{ filter.form.swing }}
+        {{ filter.form.slide }}
+        {{ filter.form.monkeyBars }}
+        {{ filter.form.sandBox }}
+        {{ filter.form.field }}
+        {{ filter.form.picnicTable }}
+        {{ filter.form.bathrooms }}
+        {{ filter.form.changingStation }}
+        {{ filter.form.shade }}
+        {{ filter.form.basketballCourt }}
+        {{ filter.form.baseball }}
+        <input type="submit" />
+    </form>
+{% endblock %}
