@@ -17,20 +17,9 @@
     <div class="col-sm-10 suggest-form">
         <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;" placeholder="zip">
     </div>
-
-    <div class="col-sm-10 suggest-form">
-        <select id="id_districtname">
-            <option value="">School District</option>
-            {% for district in dropdown %}
-                <option value="{{ district.id }}" name="{{ district.districtname }}">{{ district.districtname }}</option>
-            {% endfor %}
-        </select>
-    </div>
-
-    <div>
-        <p class="checkbox checkbox-prox" style="padding-left: 0;"><label for="id_proximityToBus">Proximity to bus (miles)</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0.0" /></p>
-        <p class="checkbox checkbox-prox" style="padding-left: 0;"><label for="id_proximityToHighway">Proximity to highway (yards)</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0.0" /></p>
-    </div>
+    
+    <div id="my_map"></div>
+    
 
 </div><!--end left col-->
 
@@ -53,9 +42,22 @@
         <p class="checkbox"><label for="id_adjacentParking">Adjacent parking</label> <input id="id_adjacentParking" name="adjacentParking" type="checkbox" /></p>
         <p class="checkbox"><label for="id_nearbyParking">Nearby parking</label> <input id="id_nearbyParking" name="nearbyParking" type="checkbox" /></p>
         <p class="checkbox"><label for="id_noParking">No parking</label> <input id="id_noParking" name="noParking" type="checkbox" /></p>
-    </span>    
+    </span>
+     <div class="col-sm-10 suggest-form">
+        <select id="id_districtname">
+            <option value="">School District</option>
+            {% for district in dropdown %}
+                <option value="{{ district.id }}" name="{{ district.districtname }}">{{ district.districtname }}</option>
+            {% endfor %}
+        </select>
+    </div>
 
-<div class="suggest-form">
+    <div>
+        <p class="checkbox checkbox-prox" style="padding-left: 0;"><label for="id_proximityToBus">Proximity to bus (miles)</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0.0" /></p>
+        <p class="checkbox checkbox-prox" style="padding-left: 0;"><label for="id_proximityToHighway">Proximity to highway (yards)</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0.0" /></p>
+    </div>
+
+<div class="col-md-10 suggest-form">
     <input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
 </div>
 
