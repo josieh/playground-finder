@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <h2>You have logged out.</h2>
+    <p>Click <a href="/">Here</a> if you are not redirected.</p>
+</div>
+
+<script>
+    window.setTimeout(function() {
+      window.location.href = '/';
+    }, 3000);
+</script>
+
+{% endblock %}

@@ -37,19 +37,40 @@ class FavoritePlaygroundLookup(models.Model):
         super(User, self).save(*args, **kwargs)
         
 class Playground(models.Model):
-    playgroundID = models.IntegerField(unique=True, null=False)
+    playgroundID = models.IntegerField(blank=True, null=True)
     name = models.TextField()
     street = models.TextField()
     zipcode = models.IntegerField()
-    handicap = models.BooleanField()
-    ageID = models.IntegerField()
-    schoolDistrictID = models.IntegerField()
-    hours = models.TextField()
-    featuresID = models.IntegerField()
-    image = models.TextField()
-    safetyFeaturesID = models.IntegerField()
-    transportFeaturesID = models.IntegerField()
-    latLon = models.CharField(max_length=20)
+    handicap = models.BooleanField(default=False, blank=True)
+    schoolDistrictID = models.IntegerField(blank=True, default=2, null=True)
+    hours = models.TextField(null=True, default="Dusk To Dawn", blank=True)
+    image = models.TextField(blank=True)
+    #should not be required, but we need to figure out how to get lat/lon from address
+    latLon = models.CharField(max_length=25, blank=True)
+    infant = models.BooleanField(default=False, blank=True)
+    toddler = models.BooleanField(default=False, blank=True)
+    preSchooler = models.BooleanField(default=False, blank=True)
+    schoolAged = models.BooleanField(default=False, blank=True)
+    preTeen = models.BooleanField(default=False, blank=True)
+    swing = models.BooleanField(default=False, blank=True)
+    slide = models.BooleanField(default=False, blank=True)
+    monkeyBars = models.BooleanField(default=False, blank=True)
+    sandBox = models.BooleanField(default=False, blank=True)
+    field = models.BooleanField(default=False, blank=True)
+    picnicTable = models.BooleanField(default=False, blank=True)
+    bathrooms = models.BooleanField(default=False, blank=True)
+    changingStation = models.BooleanField(default=False, blank=True)
+    shade = models.BooleanField(default=False, blank=True)
+    basketballCourt = models.BooleanField(default=False, blank=True)
+    baseball = models.BooleanField(default=False, blank=True)
+    proximityToHighway = models.IntegerField(default=0, blank=True, null=True)
+    fenced = models.BooleanField(default=False, blank=True)
+    bikePath = models.BooleanField(default=False, blank=True)
+    hikingTrail = models.BooleanField(default=False, blank=True)
+    adjacentParking = models.BooleanField(default=False, blank=True)
+    nearbyParking = models.BooleanField(default=False, blank=True)
+    noParking = models.BooleanField(default=False, blank=True)
+    proximityToBus = models.IntegerField(default=0, blank=True, null=True)
 
     class Meta(object):
         verbose_name_plural = "Playgrounds"
@@ -149,7 +170,7 @@ class Features(models.Model):
 
 class SafetyFeatures(models.Model):
     playgroundID = models.IntegerField(unique=True, null=False)
-    ProximityToHighway = models.IntegerField()
+    proximityToHighway = models.IntegerField()
     fenced = models.BooleanField()
 
     class Meta(object):

@@ -3,36 +3,88 @@ from django.shortcuts import render, get_object_or_404, redirect, render_to_resp
 from django.http import HttpResponseRedirect
 from playgroundApp.models import Playground, Features, SchoolDistrict, Age, TransportationFeatures
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from playgroundApp.forms import playgroundSuggest
+from playgroundApp.forms import playgroundSuggest, suggestTest, playgroundFilter
 from django.core.urlresolvers import reverse
+from django.core.context_processors import csrf
+from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
+from datetime import datetime
 import json
 
+def testFilter(request):
+	f = playgroundFilter(request.GET, queryset=Playground.objects.all())
+	return render_to_response('playgroundApp/filterTest.html',{'filter': f})
+
+def testCreate(request):
+	if request.POST:
+		form = suggestTest(request.POST)
+		#I think this is where we would set the field for latLon
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect(reverse('playgroundapp_home'))
+	else:
+		form = suggestTest()
+	args = {}
+	args.update(csrf(request))
+
+	args['form'] = form
+	args['dropdown'] = SchoolDistrict.objects.all()
+	return render_to_response('playgroundapp/create_playground.html', args)
+
 def Playground_List(request):
-	
+
 	playgrounds = Playground.objects.all()
+	f = playgroundFilter(request.GET, queryset=Playground.objects.all())
 	context = {
-		'playgrounds': playgrounds
+		'filter': f,
+		'playgrounds': playgrounds,
 	}
 	return render (request, "playgroundApp/home.html", context)
 
+def userLogin(request):
+	c = {}
+	c.update(csrf(request))
+	return render_to_response(reverse('userLogin'), c)
 
-def userProfile (request):
-        return (request, "playgroundApp/userProfile.html")
-#User=get_object_or_404 (Playground)
-#return render (request, 'playgroundApp/user_info.html', {"User": User})
-	
-def userLogin (request):
-	if request.method=='GET':
-		formLogin=login()
+def auth_view(request):
+	username = request.POST.get('username','')
+	password = request.POST.get('password','')
+	user = auth.authenticate(username=username, password=password)
+
+	if user is not None:
+		auth.login(request, user)
+		return HttpResponseRedirect(reverse('userLoggedin'))
 	else:
-		formLogin=login(request.GET)
-	if formLogin.is_valid():
-		User=User.objects.all().filter(name=formLogin.clean_data['name'])
-		return render (request, "playgroundApp/user_profile.html", {'User': User})
-	return render (request, "playgroundApp/user_login.html", {'form': formLogin,})
+		return HttpResponseRedirect(reverse('invalid_login'))
 
+def userLoggedin(request):
+	return render_to_response("playgroundApp/user_loggedin.html",{'full_name':request.user.username})
+
+def invalid_login(request):
+	return render_to_response("playgroundApp/user_invalid.html")
+
+def userLogout(request):
+	auth.logout
+	return render_to_response("playgroundApp/user_logout.html")
 def userSignUp(request):
 	return  render (request, "playgroundApp/userSignup.html")
+
+def register_user(request):
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+		if form.is_valid():
+			#instead of form.save() you can do a number of different things to increase security (like
+			#having an email sent to the user with a link for them to click)
+			form.save()
+			return HttpResponseRedirect('/playgroundapp/register_success')
+	args = {}
+	args.update(csrf(request))
+	args['form'] = UserCreationForm()
+
+	return render_to_response('playgroundApp/register.html', args)
+
+def register_success(request):
+	return render_to_response('playgroundApp/register_success.html')
 
 def playgroundGeoCodes(request):
 	playgrounds = Playground.objects.all()
@@ -44,28 +96,28 @@ def playgroundGeoCodes(request):
 
 def playgroundDetail (request, pk):
 	playground = get_object_or_404(Playground, id=pk)
-	
+	'''
 	features = Features.objects.all()
 	features = features.filter(playgroundID=pk)
 	features = features[0]
-	
-	
+	'''
+
 	schoolDistrict = SchoolDistrict.objects.all()
 	schoolDistrict = schoolDistrict.filter(schoolDistrictID = playground.schoolDistrictID)
 	schoolDistrict = schoolDistrict[0]
-	
+	'''
 	ages = Age.objects.all()
 	ages = ages.filter(ageID = playground.ageID)
 	ages = ages[0]
 
 	transport = TransportationFeatures.objects.all().filter(playgroundID = playground.playgroundID)[0]
-
+	'''
 	context = {
 		'playground':playground,
 		'schoolDistrict':schoolDistrict,
-		'features':features,
-		'age':ages,
-		'transport':transport,
+		#'features':features,
+		#'age':ages,
+		#'transport':transport,
 	}
 	return render (request, "playgroundApp/playground_info.html", context)
 
@@ -138,4 +190,3 @@ def userSuggest(request):
 
 def map(request):
         return render (request, "playgroundApp/map.html")
-        

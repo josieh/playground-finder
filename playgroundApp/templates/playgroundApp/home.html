@@ -2,24 +2,25 @@
 
 {% block content %}
 
-<div class="row opening-screen">
+<div class="row opening-screen" style="margin-top: 50px;">
     
 <div class="opening-text">
 <div class="col-md-6 col-md-offset-3 opening-text" style="min-height: 100%">
     <center>
+        <!--<img src="http://www.katiemarriner.com/static/playground/static/project/public/images/logo.svg" class="hidden-md hidden-lg">-->
         <h1 class="project-title">Find N' Play</h1>
         <h4>Find, contribute and explore playgrounds in the Durham/Chapel Hill area.</h4>
         <a href="{{ TEMPLATE_DIRS }}/#find"><button type="button" class="btn btn-info main-buttons">Find A Playground</button></a><br>
-        <a href="{{ TEMPLATE_DIRS }}playgroundapp/add-playground"><button type="button" class="btn btn-warning main-buttons">Add A Playground</button></a>
+        <a href="{{ TEMPLATE_DIRS }}playgroundapp/testForm"><button type="button" class="btn btn-warning main-buttons">Add A Playground</button></a>
     </center>
 </div>
 </div><!--end opening text-->
 </div><!--end title row-->
 
-<div class="container">
 <a id="find"></a>
+<div class="container">
 <div class="row">
-<h2>Find a Playground</h2>
+<h2>Find A Playground</h2>
 <div class="col-md-5 left-info">
     <div class="input-group input-search" style="display: table">
       <input type="text" class="form-control" placeholder="search" style="border: 1px solid #000; border-right: none;">
@@ -28,29 +29,22 @@
         </span>
     </div><!-- /input-group -->    
     
-    <div class="hidden-md hidden-lg mobile-map">
-    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
-        
-    </iframe>-->
-    </div> <!-- end mobile map-->
+    <div class="table-div park-table-outer">
     
-    <div class="table-div" style="max-height: 250px; overflow-y: scroll; margin: 20px inherit;">
-    
-    <table class="table">
+    <table id="table_id" class="table park-table">
         <thead>
-            <tr>
+            <tr class="find-header">
                 <th>Name</th>
                 <th>Location</th>
             </tr>
         </thead>
         <tbody>
-            {% for playground in playgrounds%}
+            {% for playground in filter%}
                 <tr>
                     <td><a href="{{ TEMPLATE_DIRS }}playgroundapp/playground_info/{{playground.id}}">{{playground.name}}</a></td>
                     <td>{{playground.street}}</td>
                 </tr>
             {% endfor %}
-
         </tbody>
     </table>
     </div>
@@ -66,102 +60,111 @@
           </div>
           <div id="collapseOne" class="panel-collapse collapse in">
             <div class="panel-body">
+                <form action="" method="get">
+                    <!--
+                    <input type="hidden" id="id_infant" name="infant"  value="1"> infant
+                    <input type="checkbox" id="id_infant" name="infant" value="2" />
+                    
+                    <input type="hidden" id="id_toddler" name="toddler" value="1"> toddler
+                    <input type="checkbox" id="id_toddler" name="toddler" value="2" />
+                    
+                    <input type="hidden" id="id_preSchooler" name="preSchooler" value="1"> preSchooler
+                    <input type="checkbox" id="id_preSchooler" name="preSchooler" value="2" />
+                    
+                    <input type="hidden" id="id_schoolAged" name="schoolAged" value="1">schoolAged
+                    <input type="checkbox" id="id_schoolAged" name="schoolAged" value="2" />
+                    
+                    <input type="hidden" id="id_preTeen" name="preTeen" value="1">preTeen
+                    <input type="checkbox" id="id_preTeen" name="preTeen" value="2" />
+                    
+                    <input type="hidden" id="id_swing" name="swing" value="1">swing
+                    <input type="checkbox" id="id_swing" name="swing" value="2" />
+                    
+                    <input type="hidden" id="id_slide" name="swing" value="1">slide
+                    <input type="checkbox" id="id_slide" name="swing" value="2" />
+                    
+                    <input type="submit" />
+                </form>
                 <form action="">
+                -->
                     <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_swing" name="swing" value="1">
+                      <input type="checkbox" id="id_swing" name="swing" value="2" />
                       Swings
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_slide" name="swing" value="1">
+                      <input type="checkbox" id="id_slide" name="swing" value="2" />
                       Slides
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_monkeyBars" name="monkeyBars" value="1">
+                      <input type="checkbox" id="id_monkeyBars" name="monkeyBars" value="2" />
                       Monkey Bars
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_sandBox" name="sandBox" value="1">
+                      <input type="checkbox" id="id_sandBox" name="sandBox" value="2" />
                       Sandbox
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
-                      Fence
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_field" name="field" value="1">
+                      <input type="checkbox" id="id_field" name="field" value="2" />
                       Field
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_picnicTable" name="picnicTable" value="1">
+                      <input type="checkbox" id="id_picnicTable" name="picnicTable" value="2" />
                       Picnic Tables
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
-                    Hiking Trails
-                    </label>
-                </div>
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_bathrooms" name="bathrooms" value="1">
+                      <input type="checkbox" id="id_bathrooms" name="bathrooms" value="2" />
                     Bathrooms
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_changingStation" name="changingStation" value="1">
+                      <input type="checkbox" id="id_changingStation" name="changingStation" value="2" />
                     Changing station
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_shade" name="shade" value="1">
+                      <input type="checkbox" id="id_shade" name="shade" value="2" />
                     Shade
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_basketballCourt" name="basketballCourt" value="1">
+                      <input type="checkbox" id="id_basketballCourt" name="basketballCourt" value="2" />
                     Basketball court
                     </label>
                 </div>
                 <div class="checkbox">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="hidden" id="id_baseball" name="baseball" value="1">
+                      <input type="checkbox" id="id_baseball" name="baseball" value="2" />
                     Baseball Field
                     </label>
-                </div> 
-                </form>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                Transportation
-              </a>
-            </h4>
-          </div>
-          <div id="collapseTwo" class="panel-collapse collapse">
-            <div class="panel-body">
-                <form action="">
-                    <input type="checkbox" name="transportation" value="Bike">Feature One<br>
-                    <input type="checkbox" name="transportation" value="Car">Feature Two 
+                </div>
+                <input class="btn btn-default suggest-submit" type="submit" />
                 </form>
             </div>
           </div>
@@ -171,16 +174,9 @@
     
 </div><!--end list column-->
 <div class="col-md-7 right-map">
-    <!--<iframe class="container well" src="{{ TEMPLATE_DIRS }}playgroundapp/map" style="width: 100%; min-height: 100%; border: none; padding: 0; margin: 0;">
-        
-    </iframe>-->
-    <div class="container well" style="width: 100%; height: 500px; border: none; padding: 0; margin: 0;">
+    <div class="container well" style="width: 100%; height: 100%; border: none; padding: 0; margin: 0;">
     {% include "playgroundApp/map.html" %}
     </div>
 </div>
 </div><!--end list detail and map row-->
-
-
 {% endblock %}
-
-</div><!--end div container-->
