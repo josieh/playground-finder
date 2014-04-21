@@ -2,7 +2,16 @@
 
 {% block content %}
     <div class="container">
-        <h2>Hi {{full_name}}, You Are Now Logged In!</h2>
         <p>Click <a href="/playgroundapp/logout/">Here</a> To Log Out</p>
+        <p>Click <a href="/">Here</a> if you are not redirected.</p>
     </div>
+    
+    
+    
+    <script>
+    window.setTimeout(function() {
+      window.location.href = '/';
+    }, 3000);
+
+    </script>
 {% endblock %}

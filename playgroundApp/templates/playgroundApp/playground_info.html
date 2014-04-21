@@ -32,7 +32,7 @@
                 <li id="noPark">No Parking</li>
                 <li id="park">On-Site Parking</li>
                 <li id="nearPark">Nearby Parking</li>
-                <li id="bus">{{transport.proximityToBus}} Miles from a Bus Line</li>
+                <li id="bus">{{playground.proximityToBus}} Miles from a Bus Line</li>
             </ul>
     </tr>
     <tr>
@@ -42,16 +42,16 @@
         <h6>Hours</h6> <p>{{ playground.hours }}</p>
     </tr>
     <tr>
-        <h6>Features</h6
+        <h6>Features</h6>
         <ul>
-        <li id="swing">Swings: {{ features.swing }}</li>
-        <li id="slide">Slides: {{ features.slide }}</li>
-        <li id="monkey">Monkey Bars: {{ features.monkeyBars }}</li>
-        <li id="sand">Sand Boxes: {{ features.sandBox }} </li>
-        <li id="field">Fields: {{ features.field }}</li>
-        <li id="picnic">Picnic Tables: {{ features.picnicTable }}</li>
-        <li id="bathroom">Bathrooms: {{ features.bathrooms }} </li>
-        <li id="changing">Changing Stations: {{ features.changingStation }}</li>
+        <li id="swing">Swings</li>
+        <li id="slide">Slides</li>
+        <li id="monkey">Monkey Bars</li>
+        <li id="sand">Sand Boxes</li>
+        <li id="field">Fields</li>
+        <li id="picnic">Picnic Tables</li>
+        <li id="bathroom">Bathrooms</li>
+        <li id="changing">Changing Stations</li>
         </ul>
     </tr>
     </tbody>
@@ -66,7 +66,7 @@
 </div>
 <script>
     ageArray = new Array;
-    ageArray = ["{{age.infant}}", "{{age.toddler}}", "{{age.preSchooler}}", "{{age.schoolAged}}", "{{age.preTeen}}"];
+    ageArray = ["{{playground.infant}}", "{{playground.toddler}}", "{{playground.preSchooler}}", "{{playground.schoolAged}}", "{{playground.preTeen}}"];
     console.log(ageArray);
     console.log(ageArray[1]);
     var test = ageArray[1] == "False"
@@ -91,7 +91,7 @@
     })
     
     transportArray = new Array()
-    transportArray = ["{{transport.bikePath}}", "{{transport.hikingTrail}}", "{{transport.adjacentParking}}", "{{transport.nearbyParking}}", "{{transport.noParking}}", "{{transport.proximityToBus}}"];
+    transportArray = ["{{playground.bikePath}}", "{{playground.hikingTrail}}", "{{playground.adjacentParking}}", "{{playground.nearbyParking}}", "{{playground.noParking}}", "{{playground.proximityToBus}}"];
     console.log(transportArray);
 
     $(function() {
@@ -116,32 +116,32 @@
     })
 
     featureArray = new Array()
-    featureArray = ["{{features.swing}}", "{{features.slide}}", "{{features.monkeyBars}}", "{{features.sandBox}}", "{{features.field}}", "{{features.picnicTable}}", "{{features.bathrooms}}", "{{features.changingStation}}"];
+    featureArray = ["{{playground.swing}}", "{{playground.slide}}", "{{playground.monkeyBars}}", "{{playground.sandBox}}", "{{playground.field}}", "{{playground.picnicTable}}", "{{playground.bathrooms}}", "{{playground.changingStation}}"];
     console.log(featureArray);
     
     $(function() {
-        if (featureArray[0] == 0){
+        if (featureArray[0] == "False"){
             $("#swing").hide();
         }
-        if (transportArray[1] == 0){
+        if (transportArray[1] == "False"){
             $("#slide").hide();
         }
-        if (featureArray[2] == 0){
+        if (featureArray[2] == "False"){
             $("#monkey").hide();
         }
-        if (featureArray[3] == 0){
+        if (featureArray[3] == "False"){
             $("#sand").hide();
         }
-        if (featureArray[4] == 0){
+        if (featureArray[4] == "False"){
             $("#field").hide();
         }
-        if (featureArray[5] == 0){
+        if (featureArray[5] == "False"){
             $("#picnic").hide();
         }
-        if (featureArray[6] == 0){
+        if (featureArray[6] == "False"){
             $("#bathroom").hide();
         }
-        if (featureArray[7] == 0){
+        if (featureArray[7] == "False"){
             $("#changing").hide();
         }
     })
