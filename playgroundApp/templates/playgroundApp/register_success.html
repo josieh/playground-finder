@@ -4,7 +4,14 @@
 
 <div class="container">
     <h2>You Have Registered!</h2>
-    <p>Click <a href="/playgroundapp/login/">Here</a> To Login Again</p>
+    <p>Click <a href="/">Here</a> if you are not redirected.</p>
 </div>
+
+<script>
+    window.setTimeout(function() {
+      window.location.href = '/';
+    }, 3000);
+
+    </script>
     
 {% endblock %}
