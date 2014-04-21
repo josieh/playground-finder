@@ -8,6 +8,8 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
         
+    
+    
     <meta name="viewport" content="width=device-width">
         
 </head>
@@ -88,25 +90,17 @@
         //end dropdown
         
         //DROPDOWN LOGIN
-         $('.dropdown-toggle').dropdown();
-         
-        
+        $('.dropdown-toggle').dropdown();
+
         if ($(".full_name_check").text().length > 0) {
-            console.log("{{user.username}}")
+            console.log("{{user.username}}");
             $('.signUp').hide();
             $('.userLogin').hide();
             $('.logOut').removeClass("hide");
             $('.helloUser').removeClass("hide");
-        }  else {
-            console.log("did not work");
-        }
-        
-        
+        };        
+
         $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
-                
-         
-                    
-        }); //end doc ready
         
         //this is the datatables function    
         $('#table_id').dataTable ({
@@ -115,8 +109,12 @@
             "bInfo": false,
             "aaSorting": [[ 30, "desc" ]]
         } ); //end datatables function
+
+
+        }); //end doc ready
         
-         
+        
+        
     </script>
 </body>
 </html>
