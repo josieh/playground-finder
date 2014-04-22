@@ -35,10 +35,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li class="helloUser">Hello, {{ user.username }}</li>
-                <li class="logOut"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/logout">Logout</a></li>                
+                <li class="logOut"><a href="/{{ TEMPLATE_DIRS }}logout">Logout</a></li>
                 {% else %}
                 <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
-
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle userLogin" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu login-dropdown">
