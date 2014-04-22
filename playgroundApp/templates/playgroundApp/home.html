@@ -22,7 +22,7 @@
 <div class="row">
 <h2>Find A Playground</h2>
 <div class="col-md-5 left-info">
-    <div class="input-group input-search" style="display: table">
+    <!--<div class="input-group input-search" style="display: table">
       <input type="text" class="form-control" placeholder="search" style="border: 1px solid #000; border-right: none;">
         <span class="input-group-btn">
             <button class="btn btn-default" type="button" style="background-color: hsla(58, 100%, 75%, 0.2); border: 1px solid #000; border-left: none;"><span class="glyphicon glyphicon-search" style="color: hsla(174, 94%, 31%, 0.5);"></span></button>
@@ -164,7 +164,7 @@
                     <span></span>Baseball Field
                     </label>
                 </div>
-                <input class="btn btn-default suggest-submit" onclick="getMapData(e.preventDefault)" type="submit" />
+                <input class="btn btn-default suggest-submit" onclick="getMapData()" type="submit"  />
                 </form>
             </div>
           </div>
@@ -362,8 +362,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 <script>
     function getMapData(){
-        
         console.log("getMapData()");
+        console.log(map.getZoom());
+        currentZoom
+        
     }
     //this is the datatables function    
     function setDataTables() {
