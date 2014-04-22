@@ -22,8 +22,8 @@ def testCreate(request):
 		#I think this is where we would set the field for latLon
 		if form.is_valid():
 			address = form.cleaned_data['street']
-			latLon = Geocoder.geocode(address)
-			form.latLon= latLon
+			#latLon = Geocoder.geocode(address)
+			#form.latLon= latLon
 			form.save()
 			return HttpResponseRedirect(reverse('playgroundapp_home'))
 	else:
