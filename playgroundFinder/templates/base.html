@@ -7,22 +7,18 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
-<<<<<<< HEAD
-<<<<<<< HEAD
+
         
     <style>
 
-    </style>
-=======
+
     
     <meta name="viewport" content="width=device-width">
         
->>>>>>> 91704ce83fa51e7d02f19f003b6035676b62eedc
-=======
+
     
     <meta name="viewport" content="width=device-width">
-        
->>>>>>> MAPS
+
 </head>
 
 <body>
@@ -42,28 +38,25 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li><a href="/{{ TEMPLATE_DIRS }}#find">Find</a></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
               <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/add-playground">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
-=======
               <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/testForm">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
                 <li class="helloUser full_name hide">Hello, {{ user.username }}</li>
                 <li class="logOut full_name hide"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/logout">Logout</a></li>
->>>>>>> 91704ce83fa51e7d02f19f003b6035676b62eedc
-=======
+
               <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/testForm">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
                 <li class="helloUser full_name hide">Hello, {{ user.username }}</li>
                 <li class="logOut full_name hide"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/logout">Logout</a></li>
->>>>>>> MAPS
+
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle userLogin" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu login-dropdown">
@@ -79,22 +72,16 @@
     <div class="full_name_check hide">{{user.username}}</div>
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.js"></script>
+    <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/bootstrap.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/jquery.geocomplete.js"></script>-->
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/jquery.geocomplete.min.js"></script>
 
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-    
-<<<<<<< HEAD
-    
-    
-=======
-    
-    
->>>>>>> MAPS
+
     {% block content %}
     {% endblock %}
+
     <script>
         $(document).ready (function(){
         
@@ -119,12 +106,8 @@
         
         //DATEPICKER
         $(function() {
-            $( "#datepicker" ).datepicker();
+            $("#datepicker").datepicker();
         }); //end datepicker
-        
-        //DROPDOWN DISTRICT
-        
-        //end dropdown
         
         //DROPDOWN LOGIN
         $('.dropdown-toggle').dropdown();
@@ -139,15 +122,13 @@
 
         $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
         
-        //this is the datatables function    
-        $('#table_id').dataTable ({
-            "bPaginate": false,
-            "bAutoWidth": false,
-            "bInfo": false,
-            "aaSorting": [[ 30, "desc" ]]
-        } ); //end datatables function
-
+        //setDataTables();
+        geoCoder();
         }); //end doc ready
+        
+        setDataTables();
+        
+        
 
     </script>
 </body>
