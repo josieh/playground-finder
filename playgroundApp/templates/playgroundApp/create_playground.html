@@ -19,14 +19,7 @@
     <div class="col-sm-10 suggest-form">
         <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;" placeholder="zip">
     </div>
-    <!--
     <div class="col-sm-10 suggest-form">
-        <input id="id_schoolDistrictID" name="schoolDistrictID" type="number" style="border: 1px solid #000;"/>
-    </div>
-    -->
-</div>
-    <div class="col-md-6">
-        <div class="col-sm-10 suggest-form">
         <select id="id_schoolDistrictID" name="schoolDistrictID">
             {% for district in dropdown %}
                 <option value="{{district.id}}" name="{{district.districtname}}">{{district.districtname}}</option>
@@ -34,6 +27,10 @@
         </select>
         </div><!--end district name-->
     
+    <input id="playground_geocode">
+</div>
+    <div class="col-md-6">
+    <h5>features</h5>
     <span class="filter-options">
         <p class="checkbox"><input id="id_swing" name="swing" type="checkbox" /><label for="id_swing"><span></span>Swing</label></p>
         <p class="checkbox"><input id="id_slide" name="slide" type="checkbox" /><label for="id_slide"><span></span>Slide</label></p>
@@ -57,6 +54,8 @@
         <p class="checkbox checkbox-prox"><label for="id_proximityToBus">Proximity to bus</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0" /></p>
         <p class="checkbox checkbox-prox"><label for="id_proximityToHighway">Proximity to highway</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0" /></p>
 
+    <h5>ages</h5>
+    
     <div class="col-sm-10 suggest-form">
         <input type="submit" name="submit" class="btn btn-default suggest-submit" value="Add Playground">
     </div>
@@ -64,4 +63,10 @@
 </form>
 
 </div>
+
+<script>
+    var geoCoder = function () {
+        $("#playground_geocode").geocomplete();
+    };
+</script>
 {% endblock %}

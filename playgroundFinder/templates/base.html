@@ -66,13 +66,6 @@
     <script>
         $(document).ready (function(){
         
-        var geoCoder = function () {
-            $("#geocomplete").geocomplete({
-            map: ".map_canvas",
-            details: "form"
-        });
-        };
-        
         //GEOFILL
         //$("#id_street").geocomplete();
         
@@ -110,14 +103,7 @@
 
         $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
         
-        //this is the datatables function    
-        $('#table_id').dataTable ({
-            "bPaginate": false,
-            "bAutoWidth": false,
-            "bInfo": false,
-            "aaSorting": [[ 30, "desc" ]]
-        } ); //end datatables function
-                
+        setDataTables();
         geoCoder ();
         }); //end doc ready
         
