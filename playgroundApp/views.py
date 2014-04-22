@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
-from pygeocoder import Geocoder
+#from pygeocoder import Geocoder
 import json
 
 def testFilter(request):

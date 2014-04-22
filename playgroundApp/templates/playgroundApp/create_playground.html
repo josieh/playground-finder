@@ -11,13 +11,13 @@
     {% csrf_token %}
     
     <div class="col-sm-10 suggest-form">
-        <textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;" placeholder="name"></textarea>
+        <label>*denotes required field</label><textarea cols="40" id="id_name" name="name" rows="10" style="border: 1px solid #000;" placeholder="name*"></textarea>
     </div>
     <div class="col-sm-10 suggest-form">
-        <textarea cols="40" id="id_street" name="street" rows="10" style="border: 1px solid #000;" placeholder="street, city, zip"></textarea>
+        <textarea cols="40" id="id_street" name="street" rows="10" style="border: 1px solid #000;" placeholder="street, city, zip*"></textarea>
     </div>
     <div class="col-sm-10 suggest-form">
-        <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;" placeholder="zip">
+        <input id="id_zipcode" name="zipcode" type="number" style="border: 1px solid #000;" placeholder="zip*">
     </div>
     <div class="col-sm-10 suggest-form">
         <select id="id_schoolDistrictID" name="schoolDistrictID">
@@ -26,7 +26,9 @@
             {% endfor %}
         </select>
         </div><!--end district name-->
-    
+    <p class="checkbox checkbox-prox"><label for="id_proximityToBus">Proximity to bus</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0" /></p>
+    <p class="checkbox checkbox-prox"><label for="id_proximityToHighway">Proximity to highway</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0" /></p>
+
 </div>
     <div class="col-md-6">
     <h5>features</h5>
@@ -50,9 +52,7 @@
         <p class="checkbox"><input id="id_noParking" name="noParking" type="checkbox" /><label for="id_noParking"><span></span>No parking</label></p>
     </span>
     
-        <p class="checkbox checkbox-prox"><label for="id_proximityToBus">Proximity to bus</label> <input id="id_proximityToBus" name="proximityToBus" type="number" value="0" /></p>
-        <p class="checkbox checkbox-prox"><label for="id_proximityToHighway">Proximity to highway</label> <input id="id_proximityToHighway" name="proximityToHighway" type="number" value="0" /></p>
-
+        
     <h5>ages</h5>
     <span class="filter-options">
         <p class="checkbox"><input id="id_infant" name="infant" type="checkbox" /><label for="id_infant"><span></span>Infants</label></p>
@@ -69,11 +69,9 @@
 </form>
 
 </div>
-
 <script>
     function geoCoder() {
         $("#id_street").geocomplete();
     }
-   
 </script>
 {% endblock %}

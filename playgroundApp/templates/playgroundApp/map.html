@@ -1,4 +1,3 @@
-<head>
     <!--<link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
@@ -75,6 +74,7 @@ function initialize() {
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
   map.setOptions({styles: styles});
+  
   
   var image = "{{ STATIC_URL }}marker_purple.png";
   var infowindow = new google.maps.InfoWindow();

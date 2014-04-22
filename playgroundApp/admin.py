@@ -9,7 +9,7 @@ class UserAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('UserID', 'Name', 'Zipcode', 'Age', 'isWorkingMom',
                         'isWorkingDad', 'isStayMom', 'isStayDad', 'isGrandma',
-                        'isOther', 'FavoritesID')
+                        'isOther', 'FavoritesID','swing')
         }),
         ('Advanced options', {
             'classes': ('collapse',),
