@@ -7,6 +7,7 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
+
     
     <meta name="viewport" content="width=device-width">
         
@@ -50,10 +51,10 @@
     <div class="full_name_check hide">{{user.username}}</div>
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.js"></script>
+    <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/bootstrap.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-    <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/jquery.geocomplete.js"></script>-->
+    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script> -->
+    <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/jquery.geocomplete.min.js"></script>
 
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
     
@@ -61,6 +62,7 @@
     
     {% block content %}
     {% endblock %}
+
     <script>
         $(document).ready (function(){
         
@@ -85,12 +87,8 @@
         
         //DATEPICKER
         $(function() {
-            $( "#datepicker" ).datepicker();
+            $("#datepicker").datepicker();
         }); //end datepicker
-        
-        //DROPDOWN DISTRICT
-        
-        //end dropdown
         
         //DROPDOWN LOGIN
         $('.dropdown-toggle').dropdown();
@@ -105,15 +103,13 @@
 
         $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
         
-        //this is the datatables function    
-        $('#table_id').dataTable ({
-            "bPaginate": false,
-            "bAutoWidth": false,
-            "bInfo": false,
-            "aaSorting": [[ 30, "desc" ]]
-        } ); //end datatables function
-
+        //setDataTables();
+        //geoCoder();
         }); //end doc ready
+        
+        setDataTables();
+        
+        
 
     </script>
 </body>
