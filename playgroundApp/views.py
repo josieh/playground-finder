@@ -9,6 +9,7 @@ from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
+#from pygeocoder import Geocoder
 import json
 
 def testFilter(request):
@@ -20,6 +21,9 @@ def testCreate(request):
 		form = suggestTest(request.POST)
 		#I think this is where we would set the field for latLon
 		if form.is_valid():
+			address = form.cleaned_data['street']
+			#latLon = Geocoder.geocode(address)
+			#form.latLon= latLon
 			form.save()
 			return HttpResponseRedirect(reverse('playgroundapp_home'))
 	else:

@@ -5,11 +5,12 @@
         <p>Click <a href="/playgroundapp/logout/">Here</a> To Log Out</p>
         <p>Click <a href="/">Here</a> if you are not redirected.</p>
     </div>
-    
+        <div class="full_name_check hide">{{user.username}}</div>
+
     <script>
     window.setTimeout(function() {
       window.location.href = '/';
     }, 3000);
-
+    
     </script>
 {% endblock %}
