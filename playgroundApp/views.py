@@ -9,7 +9,7 @@ from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from datetime import datetime
-#from pygeocoder import Geocoder
+from pygeocoder import Geocoder
 import json
 
 def testFilter(request):
@@ -26,6 +26,11 @@ def testCreate(request):
 			address = form.cleaned_data['street']
 			latLon = Geocoder.geocode(address)
 			form = form.save(commit=False)
+			coords = Geocoder.geocode(address)
+			coords = coords[0].coordinates
+			lat = coords[0]
+			lon = coords[1]
+			latLon = str(lat)+","+str(lon)
 			form.latLon = latLon
 			form.save()
 			return HttpResponseRedirect(reverse('playgroundapp_home'))
