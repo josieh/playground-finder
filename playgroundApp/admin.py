@@ -20,9 +20,8 @@ class PlaygroundAdmin(admin.ModelAdmin):
     search_fields = ('PlaygroundID',)
     fieldsets = (
         (None, {
-            'fields': ('playgroundID', 'name', 'street', 'zipcode', 'handicap','ageID',
-            'schoolDistrictID', 'hours', 'featuresID', 'image',
-            'safetyFeaturesID', 'transportFeaturesID', 'latLon')
+            'fields': ('playgroundID', 'name', 'street', 'zipcode', 'handicap',
+            'schoolDistrictID', 'hours', 'image', 'latLon')
         }),
     )
 class SchoolDistrictAdmin(admin.ModelAdmin):
