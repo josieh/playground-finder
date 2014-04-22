@@ -7,15 +7,8 @@
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/theme-styles.css" rel="stylesheet">
     <link href="http://www.katiemarriner.com/static/playground/static/project/public/css/app.css" rel="stylesheet">
-<<<<<<< HEAD
-
-    
-    <meta name="viewport" content="width=device-width">
-        
-=======
     <meta name="viewport" content="width=device-width">
 
->>>>>>> 263d127e2829c7ccb7d9de146392efcaf330b342
 </head>
 
 <body>
@@ -35,14 +28,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
               <li><a href="/{{ TEMPLATE_DIRS }}#find">Find</a></li>
-<<<<<<< HEAD
-              <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/testForm">Add</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
-                <li class="helloUser full_name hide">Hello, {{ user.username }}</li>
-                <li class="logOut full_name hide"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/logout">Logout</a></li>
-=======
 
               <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/testForm">Add</a></li>
             </ul>
@@ -54,7 +39,6 @@
                 {% else %}
                 <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
 
->>>>>>> 263d127e2829c7ccb7d9de146392efcaf330b342
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle userLogin" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu login-dropdown">
@@ -72,16 +56,10 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/bootstrap.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<<<<<<< HEAD
-    <!--<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script> -->
-=======
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
->>>>>>> 263d127e2829c7ccb7d9de146392efcaf330b342
     <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/jquery.geocomplete.min.js"></script>
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-    
-    
-    
+
     {% block content %}
     {% endblock %}
 
@@ -111,12 +89,7 @@
         //DROPDOWN LOGIN
         $('.dropdown-toggle').dropdown();
         
-<<<<<<< HEAD
-        //setDataTables();
-        //geoCoder();
-=======
         setDataTables();
->>>>>>> 263d127e2829c7ccb7d9de146392efcaf330b342
         }); //end doc ready
         geoCoder();
         
