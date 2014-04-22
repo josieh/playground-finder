@@ -31,7 +31,7 @@
     
     <div class="table-div park-table-outer">
     
-    <table id="table_id" class="table park-table">
+    <table id="playground_list" class="table park-table">
         <thead>
             <tr class="find-header">
                 <th>Name</th>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="checkbox">
                     <label>
-                      <span></span><input type="hidden" id="id_monkeyBars" name="monkeyBars" value="1">
+                      <input type="hidden" id="id_monkeyBars" name="monkeyBars" value="1">
                       <input type="checkbox" id="id_monkeyBars" name="monkeyBars" value="2" />
                       Monkey Bars
                     </label>
@@ -179,4 +179,17 @@
     </div>
 </div>
 </div><!--end list detail and map row-->
+
+<script>
+    //this is the datatables function    
+    function setDataTables() {
+        console.log("setDataTable")
+        $('#playground_list').dataTable ({
+        "bPaginate": false,
+        "bAutoWidth": false,
+        "bInfo": false,
+        "aaSorting": [[ 30, "desc" ]]
+    } ); //end datatables function
+    }
+</script>
 {% endblock %}
