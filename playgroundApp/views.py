@@ -103,7 +103,7 @@ def playgroundDetail (request, pk):
 	'''
 
 	schoolDistrict = SchoolDistrict.objects.all()
-	schoolDistrict = schoolDistrict.filter(schoolDistrictID = playground.schoolDistrictID)
+	schoolDistrict = schoolDistrict.filter(id= playground.schoolDistrictID)
 	schoolDistrict = schoolDistrict[0]
 	'''
 	ages = Age.objects.all()
