@@ -27,7 +27,6 @@
         </select>
         </div><!--end district name-->
     
-    <input id="playground_geocode">
 </div>
     <div class="col-md-6">
     <h5>features</h5>
@@ -65,8 +64,9 @@
 </div>
 
 <script>
-    var geoCoder = function () {
-        $("#playground_geocode").geocomplete();
-    };
+    function geoCoder() {
+        $("#id_street").geocomplete();
+    }
+   
 </script>
 {% endblock %}
