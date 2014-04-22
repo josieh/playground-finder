@@ -164,7 +164,7 @@
                     <span></span>Baseball Field
                     </label>
                 </div>
-                <input class="btn btn-default suggest-submit" type="submit" />
+                <input class="btn btn-default suggest-submit" onclick="getMapData(e.preventDefault)" type="submit" />
                 </form>
             </div>
           </div>
@@ -175,12 +175,196 @@
 </div><!--end list column-->
 <div class="col-md-7 right-map">
     <div class="container well" style="width: 100%; height: 100%; border: none; padding: 0; margin: 0;">
-    {% include "playgroundApp/map.html" %}
+    <script src="http://www.katiemarriner.com/static/playground/static_media/project/public/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Geocoding service</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+      #panel {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        margin-left: -100px;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+    
+    
+    var playgrounds = [];
+    var playground = [];
+    {% for playground in filter %}
+      playground = [];
+      playground.push({{playground.latLon}});
+      playground.push("{{playground.name}}");
+      playground.push("{{playground.id}}");
+      playgrounds.push(playground);
+    {% endfor %}
+  
+var geocoder;
+var map;
+
+
+function initialize() {
+  geocoder = new google.maps.Geocoder();
+  var mapOptions = {
+    zoom: 15
+  };
+  
+  var styles = [
+  {
+    stylers: [
+      { hue: "#05998A" },
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { hue: "#FFFA7F" },
+      { saturation: 100 },
+      { lightness: 50 },
+      {visibility: "simplified" }
+    ]
+  },{
+    featureType: "poi.business",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+    }
+];
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+  map.setOptions({styles: styles});
+  
+  
+  var image = "{{ STATIC_URL }}marker_purple.png";
+  var infowindow = new google.maps.InfoWindow();
+  var bounds = new google.maps.LatLngBounds();
+  //var html= "{{ TEMPLATE_DIRS }}playgroundapp/playground_info/{{playground.id}}";
+
+  
+  
+    for(var i=0; i<playgrounds.length;i++){
+
+      var codeStr = playgrounds[i].toString();
+      var codeStrList = codeStr.split(",");
+      var LatDec = parseFloat(codeStrList[0].trim());
+      var LonDec = parseFloat(codeStrList[1].trim());
+      var info = playgrounds[i][2];
+      var playground_url = playgrounds[i][3];
+      var latLngMarker = new google.maps.LatLng(LatDec, LonDec);
+      
+      var marker = new google.maps.Marker({
+        position: latLngMarker,
+        map: map,
+        info:'<a href="/playgroundapp/playground_info/' + playground_url + '">' + info + '</a>',
+        icon: image,
+        title:"Marker"});
+      
+      google.maps.event.addListener(marker, 'click', function () {
+            infowindow.setContent(this.info);
+            infowindow.open(map, this);
+        });
+  }
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+   
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = '';
+  } else {
+    var content = '';
+  }
+    var options = {
+    map: map,
+    position: new google.maps.LatLng(35.9834934,-78.9625019),
+    content: content
+  };
+
+  
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+}
+function codeAddress() {
+  var address = document.getElementById('address').value;
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var image = '{{ STATIC_URL }}marker_purple.png';
+      var purpleMarker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location,
+          icon: image
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+function keyDetect(e) {
+  console.log("keyDetect" + e);
+  if(e.keyCode == 13) {
+    codeAddress();
+  }
+}
+
+
+function showKeyCode(e) {
+        console.log("showKeyCode");
+        if (e.keyCode == 13){
+          console.log("working");
+          codeAddress()
+        }
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body onkeydown="showKeyCode(event);"> 
+    <div id="panel">
+      <input id="address" type="textbox" value="My Address">
+      <input type="button" value="Go!" onclick="codeAddress()"  >
     </div>
+    <div id="map-canvas"></div>
+  </body>    </div>
 </div>
 </div><!--end list detail and map row-->
 
 <script>
+    function getMapData(){
+        
+        console.log("getMapData()");
+    }
     //this is the datatables function    
     function setDataTables() {
         console.log("setDataTable")

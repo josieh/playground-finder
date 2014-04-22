@@ -17,7 +17,7 @@
             "preSchooler": true,
             "schoolAged": true,
             "preTeen": true,
-            "swing": true,
+            "swing": false,
             "slide": true,
             "monkeyBars": true,
             "sandBox": true,
