@@ -33,9 +33,11 @@
               <li><a href="/{{ TEMPLATE_DIRS }}playgroundapp/testForm">Add</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li class="helloUser">Hello, {{ user.username }}</li>
+                <li class="logOut"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/logout">Logout</a></li>                
+                {% else %}
                 <li class="signUp"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/register">Sign Up</a></li>
-                <li class="helloUser full_name hide">Hello, {{ user.username }}</li>
-                <li class="logOut full_name hide"><a href="/{{ TEMPLATE_DIRS }}playgroundapp/logout">Logout</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle userLogin" data-toggle="dropdown">Login <b class="caret"></b></a>
                   <ul class="dropdown-menu login-dropdown">
@@ -43,19 +45,17 @@
                     <div class="append"></div>
                   </ul>
                 </li>
-                <li class="loggedIn"></li>
+                {% endif %}
+                
             </ul><!--end login-->
         </div><!-- /.navbar-collapse -->
         </div><!-- /.container -->
     </nav>
-    <div class="full_name_check hide">{{user.username}}</div>
     
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/bootstrap.js"></script>
     <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
     <script src="http://www.katiemarriner.com/static/playground/static/project/public/js/jquery.geocomplete.min.js"></script>
-
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
     
     
@@ -65,10 +65,6 @@
 
     <script>
         $(document).ready (function(){
-        
-        //GEOFILL
-        //$("#id_street").geocomplete();
-        
         //SMOOTH SCROLL
         $(function() {
             $('a[href*=#]:not([href=#])').click(function() {
@@ -92,18 +88,7 @@
         
         //DROPDOWN LOGIN
         $('.dropdown-toggle').dropdown();
-
-        if ($(".full_name_check").text().length > 0) {
-            console.log("{{user.username}}");
-            $('.signUp').hide();
-            $('.userLogin').hide();
-            $('.logOut').removeClass("hide");
-            $('.helloUser').removeClass("hide");
-        };        
-
-        $(".loggedIn").load("../playgroundapp/loggedin .full_name_check");
         
-        //setDataTables();
         geoCoder();
         }); //end doc ready
         
