@@ -23,19 +23,6 @@ class User(models.Model):
         self.userID = self.userID.upper()
         super(User, self).save(*args, **kwargs)
         
-class FavoritePlaygroundLookup(models.Model):
-    userID = models.CharField(unique=True, null=False, max_length=200)
-    playgroundID = models.IntegerField(unique=True, null=False)
-    
-    class Meta(object):
-        verbose_name_plural = "Favorites"
-        #ordering = ('userID',)
-    def __unicode__(self):
-        return unicode(self.userID)
-    def save(self, *args, **kwargs):
-        self.userID = self.userID.upper()
-        super(User, self).save(*args, **kwargs)
-        
 class Playground(models.Model):
     playgroundID = models.IntegerField(blank=True, null=True)
     name = models.TextField()
